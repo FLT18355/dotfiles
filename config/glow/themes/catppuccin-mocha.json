@@ -1,0 +1,53 @@
+{
+  "document": {
+    "color": "#cdd6f4"
+  },
+  "heading": {
+    "level1": {
+      "color": "#cba6f7",
+      "bold": true
+    },
+    "level2": {
+      "color": "#89b4fa",
+      "bold": true
+    },
+    "level3": {
+      "color": "#94e2d5",
+      "bold": true
+    }
+  },
+  "paragraph": {
+    "color": "#cdd6f4"
+  },
+  "list": {
+    "color": "#a6e3a1"
+  },
+  "list_item": {
+    "color": "#a6e3a1"
+  },
+  "code_block": {
+    "color": "#f9e2af",
+    "background": "#313244"
+  },
+  "code_inline": {
+    "color": "#f9e2af",
+    "background": "#313244"
+  },
+  "link": {
+    "color": "#89b4fa",
+    "underline": true
+  },
+  "thematic_break": {
+    "color": "#45475a"
+  },
+  "quote": {
+    "color": "#fab387"
+  },
+  "table": {
+    "color": "#cdd6f4",
+    "header": {
+      "color": "#cba6f7",
+      "bold": true
+    }
+  }
+}
