@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Logo](assets/logo.svg)
+![Logo](assets/logo.svg){:width="120px"}
 
 [![GitHub last commit](https://img.shields.io/github/last-commit/FLT18355/dotfiles)](https://github.com/FLT18355/dotfiles)
 [![GitHub repo size](https://img.shields.io/github/repo-size/FLT18355/dotfiles)](https://github.com/FLT18355/dotfiles)
