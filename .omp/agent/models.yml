@@ -1,0 +1,51 @@
+# managed by `headroom wrap omp` — do not hand-edit while wrapped.
+# `headroom unwrap omp` restores the pre-wrap file (or removes this one
+# if it did not exist). The original is kept at <models.yml.headroom-backup>.
+providers:
+  Sensenova:
+    baseUrl: https://token.sensenova.cn/v1
+    api: openai-completions
+    apiKey: KEY
+    authHeader: true
+    models:
+    - id: deepseek-v4-flash
+      name: DeepSeek V4 Flash
+      contextWindow: 1000000
+      maxTokens: 32767
+      input:
+      - text
+    - id: glm-5.2
+      name: GLM 5.2
+      contextWindow: 1000000
+      maxTokens: 32767
+      input:
+      - text
+    - id: kimi-k3
+      name: Kimi K3
+      contextWindow: 1000000
+      maxTokens: 32767
+      input:
+      - text
+  modelscope:
+    baseUrl: https://api-inference.modelscope.cn/v1
+    api: openai-completions
+    apiKey: KEY
+    authHeader: true
+    models:
+    - id: deepseek-ai/DeepSeek-V4-Flash-0731
+      name: DeepSeek V4 Flash (ModelScope)
+      contextWindow: 1024000
+      maxTokens: 8192
+      input:
+      - text
+      compat:
+        reasoning: true
+    - id: Qwen/Qwen3.8-Flash-Next
+      name: Qwen3.8 Flash Next (ModelScope)
+      contextWindow: 1024000
+      maxTokens: 8192
+      input:
+      - text
+      - image
+  anthropic:
+    baseUrl: http://127.0.0.1:8788/p/flt18355
