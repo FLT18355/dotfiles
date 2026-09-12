@@ -4,10 +4,10 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-      -- 将主题风格设为 latte（亮色）
-      flavour = "latte",
-      -- 亮色主题下一般不需要透明背景，但如果你需要可以保持 true
-      transparent_background = true,
+      -- 将主题风格设为 mocha（深色）
+      flavour = "mocha",
+      -- 深色主题下通常建议关闭透明背景，避免与终端背景冲突
+      transparent_background = false,
       term_colors = true,
       integrations = {
         aerial = true,
@@ -30,47 +30,47 @@ return {
         mason = true,
         snacks = true,
       },
-      -- 高亮覆盖：将 mocha 改为 latte
+      -- 高亮覆盖：将 latte 改为 mocha
       highlight_overrides = {
-        latte = function(latte)
+        mocha = function(mocha)
           return {
-            CursorLineNr = { fg = latte.yellow },
-            TelescopeSelection = { bg = latte.surface0 },
-            TelescopeSelectionCaret = { fg = latte.yellow, bg = latte.surface0 },
-            TelescopePromptPrefix = { fg = latte.yellow },
-            FlashCurrent = { bg = latte.peach, fg = latte.base },
-            FlashMatch = { bg = latte.red, fg = latte.base },
-            FlashLabel = { bg = latte.teal, fg = latte.base },
-            -- 亮色主题下的浮窗背景用 crust 或 surface0 会更柔和
-            NormalFloat = { bg = latte.crust },
-            FloatBorder = { bg = latte.crust },
-            FloatTitle = { bg = latte.crust },
-            RenderMarkdownCode = { bg = latte.crust },
-            Pmenu = { bg = latte.surface0 },
+            CursorLineNr = { fg = mocha.yellow },
+            TelescopeSelection = { bg = mocha.surface0 },
+            TelescopeSelectionCaret = { fg = mocha.yellow, bg = mocha.surface0 },
+            TelescopePromptPrefix = { fg = mocha.yellow },
+            FlashCurrent = { bg = mocha.peach, fg = mocha.base },
+            FlashMatch = { bg = mocha.red, fg = mocha.base },
+            FlashLabel = { bg = mocha.teal, fg = mocha.base },
+            -- 深色主题下的浮窗背景用 mantle 或 surface0 会更柔和
+            NormalFloat = { bg = mocha.mantle },
+            FloatBorder = { bg = mocha.mantle },
+            FloatTitle = { bg = mocha.mantle },
+            RenderMarkdownCode = { bg = mocha.mantle },
+            Pmenu = { bg = mocha.surface0 },
             Comment = { bg = nil, style = {} },
             Conditional = { style = { "underline" } },
             Keyword = { style = { "bold" } },
             Repeat = { style = { "bold" } },
             statusline = { bg = nil },
 
-            WinBar = { fg = latte.blue, bg = latte.surface0 },
-            WinBarNC = { fg = latte.overlay0, bg = latte.surface0 },
+            WinBar = { fg = mocha.blue, bg = mocha.surface0 },
+            WinBarNC = { fg = mocha.overlay0, bg = mocha.surface0 },
 
-            CursorLine = { bg = latte.surface0 }, -- 亮色下使用 surface0 高亮当前行
-            StatusLine = { bg = nil, fg = latte.text }, -- 状态栏完全透明
+            CursorLine = { bg = mocha.surface0 }, -- 深色下使用 surface0 高亮当前行
+            StatusLine = { bg = nil, fg = mocha.text }, -- 状态栏完全透明
 
-            DiagnosticUnderlineError = { style = { "undercurl", "bold" }, sp = latte.red },
-            DiagnosticUnderlineWarn = { style = { "undercurl" }, sp = latte.yellow },
-            DiagnosticUnderlineInfo = { style = { "undercurl" }, sp = latte.blue },
-            DiagnosticUnderlineHint = { style = { "undercurl" }, sp = latte.teal },
+            DiagnosticUnderlineError = { style = { "undercurl", "bold" }, sp = mocha.red },
+            DiagnosticUnderlineWarn = { style = { "undercurl" }, sp = mocha.yellow },
+            DiagnosticUnderlineInfo = { style = { "undercurl" }, sp = mocha.blue },
+            DiagnosticUnderlineHint = { style = { "undercurl" }, sp = mocha.teal },
           }
         end,
       },
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      -- colorscheme 会自动根据 flavour 加载，但这里需要改成 "catppuccin-latte"
-      vim.cmd.colorscheme("catppuccin-latte")
+      -- colorscheme 名称改为 "catppuccin-mocha"
+      vim.cmd.colorscheme("catppuccin-mocha")
     end,
   },
 }
