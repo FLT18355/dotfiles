@@ -101,4 +101,4 @@ alias her='herdr'
 alias unm="npx -p @unblockneteasemusic/server"
 alias dsh="node --expose-internals /usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js"
 alias xiamenw="curl wttr.in/厦门?lang=zh-cn"
-alias gits="/home/flt18355/Daily/tools/gits.py"
+# alias gits="/home/flt18355/Daily/tools/gits.py"

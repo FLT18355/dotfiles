@@ -42,8 +42,6 @@ set -gx HISTFILE ~/.local/share/fish/fish_history
 # 光标
 set -gx KEYTIMEOUT 10
 
-
-
 # 其他
 set -gx GLYCIN_DISABLE_SANDBOX 1
 
@@ -53,7 +51,3 @@ set -gx PULSE_SERVER 127.0.0.1
 # pip 镜像
 set -gx UV_DEFAULT_INDEX https://pypi.tuna.tsinghua.edu.cn/simple
 
-# Github Copilot Cli
-set -gx COPILOT_PROVIDER_BASE_URL https://apihub.agnes-ai.cn/v1
-set -gx COPILOT_PROVIDER_API_KEY sk-zE3PVeemUHeFHgneG7NZi0Y5yTNRKq2qZjh9GMLPtOJ6C3jN
-set -gx COPILOT_MODEL agnes-2.5-flash

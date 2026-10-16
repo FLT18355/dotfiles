@@ -5,7 +5,7 @@
 [mgr]
 linemode = "size_and_mtime"
 ratio = [1, 3, 2]
-show_hidden = true
+show_hidden = false
 show_symlink = true
 sort_by = "natural"
 sort_dir_first = true
@@ -22,8 +22,8 @@ ueberzug_scale = 1
 
 [opener]
 edit = [
-  { run = 'nvim "$@"', block = true, for = "macos" },
-  { run = 'nvim "$@"', block = true, for = "unix" },
+  { run = 'NVIM_FROM_YAZI=1 nvim "$@"', block = true, desc = "nvim", for = "macos" },
+  { run = 'NVIM_FROM_YAZI=1 nvim "$@"', block = true, desc = "nvim", for = "unix" },
   { run = 'code "%*"', orphan = true, for = "windows" },
 ]
 extract = [
@@ -48,18 +48,36 @@ reveal = [
 ]
 rootbrowse = [{ run = 'rootbrowse "$1"', orphan = true, for = "unix" }]
 rbtuple = [{ run = '''bash -lc 'source "$HOME/dotfiles/bash/functions"; rbtuple "$@"' rbtuple "$@"''', desc = "rbtuple", orphan = true, for = "unix" }]
-root = [{ run = '~/dotfiles/scripts/run_root_macro.sh "$1"', orphan = true, for = "unix", desc = "ROOT GUI" }]
+root = [{ run = 'exec "${XDG_CONFIG_HOME:-$HOME/.config}/yazi/scripts/yazi_root.sh" "$@"', block = false, orphan = true, for = "unix", desc = "Load macro in bkg" }]
+root_no_pull = [{ run = 'exec "${XDG_CONFIG_HOME:-$HOME/.config}/yazi/scripts/yazi_root_without_pull.sh" "$1"', block = false, orphan = true, for = "unix", desc = "Display without pull" }]
+root_zoom = [{ run = 'exec "${XDG_CONFIG_HOME:-$HOME/.config}/yazi/scripts/yazi_root_zoom_prompt.sh" "$1"', block = true, orphan = false, for = "unix", desc = "Display with axis zoom" }]
+root_compare_2d = [{ run = 'exec "${XDG_CONFIG_HOME:-$HOME/.config}/yazi/scripts/yazi_root_compare_2d.sh" "$@"', block = false, orphan = true, for = "unix", desc = "Compare selected 2D macro pairs" }]
+rootpair = [{ run = '''dir="$1"; set --; for name in h_mjpsipi2h.C h_mjpsipih.C h_mjpsik2h.C h_mjpsikh.C; do macro="$dir/$name"; [ -f "$macro" ] && set -- "$@" "$macro"; done; [ "$#" -gt 0 ] && exec "${XDG_CONFIG_HOME:-$HOME/.config}/yazi/scripts/yazi_root.sh" "$@"''', block = false, orphan = true, for = "unix", desc = "Open h and 2h pi/K macros" }]
+exotics10x = [{ run = 'YAZI_SCALE_EXOTICS=10 exec "${XDG_CONFIG_HOME:-$HOME/.config}/yazi/scripts/yazi_root.sh" "$@"', block = false, orphan = true, for = "unix", desc = "Load macro, scale exotic PDFs 10x" }]
 sioyek = [{ run = 'sioyek "$1"', orphan = true, for = "unix" }]
 skim = [{ run = 'open -a "Skim" "$1"', orphan = true, for = "macos" }]
+x11_pdf = [{ run = 'bash "${XDG_CONFIG_HOME:-$HOME/.config}/yazi/scripts/yazi_x11_pdf.sh" "$@"', desc = "Open via X11", for = "linux" }]
+x11_png = [{ run = '''if [ -n "$SSH_CONNECTION" ] && [ -n "$DISPLAY" ]; then for viewer in mupdf-gl feh nsxiv sxiv imv eog ristretto; do if command -v "$viewer" >/dev/null; then exec "$viewer" "$@"; fi; done; fi; exec xdg-open "$@"''', desc = "Open via X11", for = "linux" }]
 zathura = [{ run = 'zathura "$1"', orphan = true, for = "unix" }]
 yac = [{ name = "YAC", run = 'open -a "YACReader" "$1"', orphan = true, for = "macos"}]
 
 [open]
 prepend_rules = [
+  { url = "*/", use = [
+    "rootpair",
+    "edit",
+    "open",
+    "reveal",
+  ] },
   { mime = "application/pdf", use = [
+    "x11_pdf",
     "skim",
     "zathura",
     "reveal",
+  ] },
+  { mime = "image/png", use = [
+    "x11_png",
+    "open",
   ] },
   { url = "*.root", use = [
     "rbtuple",
@@ -67,9 +85,14 @@ prepend_rules = [
   { mime = "application/zip", use = [
     "yac",
   ] },
-  { url = "*.C", use = [
-    "root",
-  ] },
+    { url = "*.C", use = [
+      "root",
+      "root_compare_2d",
+      "root_no_pull",
+      "root_zoom",
+      "exotics10x",
+     "edit",
+   ] },
 ]
 
 [tasks]
@@ -82,6 +105,8 @@ suppress_preload = false
 
 [plugin]
 prepend_preloaders = [
+  { url = "/Users/patricorgi/SSHFS/**/*.pdf", run = "pdf" },
+  { url = "/Users/patricorgi/SSHFS/**/*.PDF", run = "pdf" },
   { url = "/Users/patricorgi/SSHFS/**", run = "noop" },
   { url = "/Volumes/**", run = "noop" },
   { mime = 'application/pdf', run = "noop" },

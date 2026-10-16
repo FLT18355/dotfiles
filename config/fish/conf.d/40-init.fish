@@ -5,6 +5,7 @@
 fzf --fish | source
 eval "$(starship init fish)"
 fish_config theme choose catppuccin-mocha
+# posh init fish --config ~/Daily/git/catppuccin.omp/mocha.omp.json | source
 
 # Carapace 补全 (未启用)
 # carapace _carapace | source
