@@ -2,4 +2,13 @@
 https://github.com/jj-vcs/jj: jj
 https://github.com/FLT18355/Gitx: Gitx
 https://github.com/herdrdev/herdr: herdr
+https://github.com/FLT18355/FTBCLI: FTBCLI
+https://github.com/cli/cli: github-cli[pacman]
+https://github.com/can1357/oh-my-pi: oh-my-pi
+
+# skills
+https://github.com/Leonxlnx/taste-skill: skills[taste-skill(.agents)]
+
+# music
+https://github.com/FLT18355/LXM: LXM
 
