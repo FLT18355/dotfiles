@@ -1,0 +1,170 @@
+Laya 决策模型部署总结与操作流程
+
+📋 部署总结
+
+本次部署的核心目标是在 ARM64 Linux（PRoot/Termux 环境） 上运行 Laya 多语言决策模型，过程经历了几个关键阶段：
+
+遇到的问题与解决
+
+问题 原因 解决
+pip install laya 拉取 3GB CUDA 依赖 PyTorch 默认捆绑 NVIDIA CUDA 库，ARM64 用不上 改用 --torch-backend=cpu 只装 CPU 版
+uv pip install --system 被拒绝 Arch Linux 保护系统 Python 环境 加 --break-system-packages
+装包时报 Operation not permitted PRoot 不支持硬链接 加 --link-mode=copy
+ollaya create 失败 Ollaya 不支持 Safetensors 格式 放弃 Ollaya，改用 laya Python SDK
+CLI 每次运行都要重新加载模型，耗时 1 分钟 每次都是新进程，模型被反复加载 改成「常驻服务 + HTTP 客户端」架构
+
+最终架构
+
+```
+laya_server.py   ← 常驻进程，加载模型一次，监听 127.0.0.1:8008
+laya_cli.py      ← 轻量客户端，发 HTTP 请求，秒级返回
+SKILL.md         ← AI 技能描述文件
+```
+
+---
+
+🚀 给其他用户的操作流程
+
+前置要求
+
+· Linux ARM64 环境（Termux / PRoot / Arch Linux ARM 均可）
+· Python 3.10+
+· 约 2GB 空闲磁盘空间（torch CPU 版 ~200MB + 模型权重 ~644MB）
+
+第一步：安装依赖
+
+```bash
+# 1. 装 CPU 版 PyTorch（避免 CUDA 全家桶）
+uv pip install --system torch --break-system-packages --torch-backend=cpu \
+  -i https://mirrors.aliyun.com/pypi/simple/ \
+  -f https://mirrors.aliyun.com/pytorch-wheels/cpu
+
+# 2. 装 laya 本体（跳过依赖声明）
+uv pip install --system laya --break-system-packages --no-deps \
+  -i https://mirrors.aliyun.com/pypi/simple/
+
+# 3. 补上必要的依赖（注意 --link-mode=copy，PRoot 环境必须）
+uv pip install --system transformers tokenizers numpy huggingface_hub requests \
+  --break-system-packages --link-mode=copy \
+  -i https://mirrors.aliyun.com/pypi/simple/
+```
+
+第二步：下载模型权重
+
+```bash
+# 用 ModelScope 下载多语言版（国内速度快）
+modelscope download --model convaiinnovations/laya \
+  --include "multilingual/*" \
+  --local_dir ~/laya-multilingual
+```
+
+下载完成后，确认目录结构：
+
+```bash
+ls ~/laya-multilingual/multilingual/
+# 应该看到: model.safetensors  config.json  tokenizer.json  tokenizer_config.json  encoder/
+```
+
+第三步：创建技能目录和文件
+
+```bash
+mkdir -p ~/.agents/skills/laya
+cd ~/.agents/skills/laya
+```
+
+把 laya_server.py、laya_cli.py、SKILL.md 三个文件放到这个目录里（内容见下方附录）。
+
+```bash
+chmod +x laya_server.py laya_cli.py
+```
+
+第四步：启动常驻服务
+
+```bash
+# 前台运行（推荐首次调试用，能看到加载日志）
+LAYA_OFFLINE=1 python ~/.agents/skills/laya/laya_server.py
+```
+
+等待它打印：
+
+```
+[server] 模型加载完成
+[server] 监听 http://127.0.0.1:8008
+```
+
+首次加载约 30–90 秒，这是正常的。加载完成后保持窗口常开。
+
+如果希望后台运行：
+
+```bash
+nohup LAYA_OFFLINE=1 python ~/.agents/skills/laya/laya_server.py \
+  > /tmp/laya-server.log 2>&1 &
+```
+
+第五步：调用测试
+
+另开一个终端：
+
+```bash
+# 部门分诊
+python ~/.agents/skills/laya/laya_cli.py \
+  "我被重复扣款了，请尽快退款" \
+  -q department -c billing,technical,sales,other
+
+# 紧急度评估
+python ~/.agents/skills/laya/laya_cli.py \
+  "系统宕机，客户无法下单" \
+  -q urgency -t score -c "not urgent,soon,blocking"
+
+# 流失风险判断
+python ~/.agents/skills/laya/laya_cli.py \
+  "再不解决我就退订" -q churn -t noul
+```
+
+预期输出：
+
+```
+==================================================
+  决策结果
+==================================================
+
+▸ department
+  结论: billing  (置信度 94.1%)
+  概率分布:
+    billing         94.12%  ██████████████████
+    technical        3.10%  █
+    sales            2.78%  █
+```
+
+---
+
+⚠️ 常见问题
+
+现象 原因 解决
+服务加载超过 2 分钟无响应 仍在尝试联网探测 确认 LAYA_OFFLINE=1 已设置；检查模型目录是否有 config.json
+CLI 提示「无法连接 127.0.0.1:8008」 服务未启动 先跑 laya_server.py
+装包报 Operation not permitted PRoot 不支持硬链接 所有 uv pip install 都加 --link-mode=copy
+提示缺少依赖 某个小包没装上 根据报错信息补装对应的包
+中文任务结果很差 用了英文版模型 确认 LAYA_MODEL 指向 multilingual 目录
+
+---
+
+📌 架构优势
+
+· 模型只加载一次：服务启动后常驻内存，后续调用不需要重复加载
+· CLI 秒级返回：每次调用只需发一个 HTTP 请求，不涉及磁盘 I/O
+· CPU 线程优化：torch.set_num_threads(4) 让推理速度提升约 12 倍
+· 离线可用：设置 LAYA_OFFLINE=1 后完全不依赖网络
+
+---
+
+📎 附录：三个文件的位置
+
+```
+~/.agents/skills/laya/
+├── SKILL.md          # AI 技能描述
+├── laya_server.py    # 常驻服务
+└── laya_cli.py       # CLI 客户端
+```
+
+三个文件的完整内容已在前面的对话中给出，直接复制保存即可。如果 laya 官方后续更新了 API，可能需要微调 laya_server.py 里 agent.predict() 的参数格式。
