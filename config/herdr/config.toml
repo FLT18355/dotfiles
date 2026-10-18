@@ -10,7 +10,7 @@ onboarding = false
 # Built-in themes: catppuccin, terminal, tokyo-night, dracula, nord,
 #                  gruvbox, one-dark, solarized, kanagawa, rose-pine,
 #                  vesper
-name = "catppuccin-latte"
+name = "catppuccin"
 
 # Follow host terminal light/dark appearance and switch Herdr UI themes.
 # Existing manual behavior is unchanged unless this is true.
@@ -217,6 +217,7 @@ command = "persiyanov.reviewr.toggle"
 # terminal_title, and terminal_title_stripped.
 # Custom values reported through pane metadata use a $name token.
 show_agent_labels_on_pane_borders = true
+status_indicators = "dots"
 [ui.sidebar.agents]
 # Blank rows between agent entries. Set to 1 to restore the previous spacing.
 row_gap = 0
@@ -311,6 +312,7 @@ pane_history = false
 # Cursor shape rendered when reveal_hidden_cursor_for_cjk_ime is true.
 # Values: block, steady_block (default), underline, steady_underline, bar, steady_bar.
 # cjk_ime_cursor_shape = "steady_block"
+allow_nested = true
 
 [advanced]
 # Maximum scrollback buffer size in bytes retained per pane terminal.
