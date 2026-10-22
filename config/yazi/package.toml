@@ -68,6 +68,16 @@ use = "linxuan-sys/docx-preview"
 rev = "3b826c4"
 hash = "b196b90e3fecda291756a3f795f0746b"
 
+[[plugin.deps]]
+use = "AminurAlam/yazi-plugins:preview-typst"
+rev = "7d8ead5"
+hash = "2aacd8b872663cc36ac6c5bf6b6dc867"
+
+[[plugin.deps]]
+use = "dedukun/bookmarks"
+rev = "9ef1254"
+hash = "92fbb5483657fa7976cdf4e0104e18e0"
+
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"
 rev = "1183892"

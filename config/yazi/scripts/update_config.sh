@@ -2,12 +2,11 @@
 set -e
 
 # Ask for confirmation
-read -p "你确定要强制覆盖本地 Yazi 配置吗? (y/n) " -n 1 -r
-echo    # (optional) move to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    echo "操作已取消。"
-    exit 1
+read -p "你确定要强制覆盖本地 Yazi 配置吗? (y/N) " -n 1 -r
+echo # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+  echo "操作已取消。"
+  exit 1
 fi
 
 # Navigate to the Yazi configuration directory

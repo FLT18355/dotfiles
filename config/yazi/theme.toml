@@ -20,7 +20,7 @@ count_selected = { fg = "#1e1e2e", bg = "#cba6f7" } # Base / Mauve
 
 # Border
 border_symbol = "│"
-border_style  = { fg = "#b4befe" } # Lavender
+border_style  = { fg = "#cba6f7" } # Lavender
 
 # : ]]]
 

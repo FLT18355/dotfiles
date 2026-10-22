@@ -45,21 +45,12 @@ keymap = [
   { on = [ "`", "`" ], run = "plugin gvfs -- jump-back-prev-cwd", desc = "跳回上一个目录" },
 
   # =======================
-  # 书签操作
+  # 书签 (bookmarks)
   # =======================
-  { on = "[", run = "plugin whoosh jump_by_key", desc = "通过书签快捷键跳转" },
-  { on = "}", run = "plugin whoosh jump_by_fzf", desc = "直接模糊搜索书签" },
-  { on = [ "]", "a" ], run = "plugin whoosh save", desc = "添加书签(当前文件/目录)" },
-  { on = [ "]", "A" ], run = "plugin whoosh save_cwd", desc = "添加书签(当前目录)" },
-  { on = [ "]", "t" ], run = "plugin whoosh save_temp", desc = "添加临时书签(当前文件/目录)" },
-  { on = [ "]", "T" ], run = "plugin whoosh save_cwd_temp", desc = "添加临时书签(当前目录)" },
-  { on = "<A-k>", run = "plugin whoosh jump_key_k", desc = "直接跳转到书签'k'" },
-  { on = [ "]", "f" ], run = "plugin whoosh jump_by_fzf", desc = "通过模糊搜索跳转到书签" },
-  { on = [ "]", "d" ], run = "plugin whoosh delete_by_key", desc = "通过快捷键删除书签" },
-  { on = [ "]", "D" ], run = "plugin whoosh delete_by_fzf", desc = "通过模糊搜索删除书签(使用TAB多选)" },
-  { on = [ "]", "C" ], run = "plugin whoosh delete_all", desc = "删除所有用户书签" },
-  { on = [ "]", "r" ], run = "plugin whoosh rename_by_key", desc = "通过快捷键重命名书签" },
-  { on = [ "]", "R" ], run = "plugin whoosh rename_by_fzf", desc = "通过模糊搜索重命名书签" },
+  { on = "[", run = "plugin bookmarks save", desc = "保存当前位置为书签" },
+  { on = "]", run = "plugin bookmarks jump", desc = "跳转到书签" },
+  { on = [ "\\", "d" ], run = "plugin bookmarks delete", desc = "删除书签" },
+  { on = [ "\\", "D" ], run = "plugin bookmarks delete_all", desc = "删除所有书签" },
 
   # =======================
   # 压缩文件
@@ -100,7 +91,6 @@ keymap = [
   # =======================
   # 标签页管理
   # =======================
-  { on = "t", run = "tab_create --current", desc = "创建新标签页(使用当前目录)" },
   { on = "1", run = "tab_switch 0", desc = "第一个标签页" },
   { on = "2", run = "tab_switch 1", desc = "第二个标签页" },
   { on = "3", run = "tab_switch 2", desc = "第三个标签页" },
@@ -119,7 +109,9 @@ keymap = [
   { on = "<C-[>", run = "escape",             desc = "退出视觉模式,清除选择或取消搜索" },
   { on = "q",     run = "quit",               desc = "退出程序" },
   { on = "Q",     run = "quit --no-cwd-file", desc = "退出且不输出cwd文件" },
-  { on = "<C-c>", run = "close",              desc = "关闭当前标签页，如是最后一个则退出" },
+  { on = [ "t", "t" ], run = "tab_create --current",   desc = "在当前目录新建标签页" },
+  { on = [ "t", "r" ], run = "tab_rename --interactive", desc = "重命名当前标签页" },
+  { on = [ "t", "q" ], run = "close",              desc = "关闭当前标签页，如是最后一个则退出" },
   { on = "<C-z>", run = "suspend",            desc = "挂起程序" },
 
   # =======================
@@ -260,9 +252,7 @@ keymap = [
   { on = "<F1>",      run = "help",          desc = "打开帮助" },
   { on = [ "c", "C" ], run = "copy url",     desc = "复制文件 URL" },
   { on = [ "c", "D" ], run = "copy dirurl",  desc = "复制目录 URL" },
-  { on = [ "t", "t" ], run = "tab_create --current",   desc = "在当前目录新建标签页" },
-  { on = [ "t", "r" ], run = "tab_rename --interactive", desc = "重命名当前标签页" },
-]
+  ]
 
 
 # ==================== 任务管理器键位配置 ====================
