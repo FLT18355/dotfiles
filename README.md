@@ -7,16 +7,20 @@
 **一套精心配置、高度定制化的 Linux 开发环境**<br>
 *Built with ❤️ & ☕ on Arch Linux ARM*
 
+<br>
+
+<!-- 状态徽章 -->
 [![GitHub last commit](https://img.shields.io/github/last-commit/FLT18355/dotfiles?style=flat-square&color=89b4fa&logo=github)](https://github.com/FLT18355/dotfiles)
 [![GitHub repo size](https://img.shields.io/github/repo-size/FLT18355/dotfiles?style=flat-square&color=cba6f7)](https://github.com/FLT18355/dotfiles)
 [![License: Apache-2.0](https://img.shields.io/github/license/FLT18355/dotfiles?style=flat-square&color=a6e3a1)](LICENSE)
 
-<!-- Catppuccin Mocha 配色灵感 -->
-![Arch Linux](https://img.shields.io/badge/OS-Arch%20Linux%20ARM-89b4fa?style=flat-square&logo=arch-linux)
-![Window Manager](https://img.shields.io/badge/WM-Openbox-fab387?style=flat-square)
-![Shell](https://img.shields.io/badge/Shell-Fish-cba6f7?style=flat-square&logo=gnu-bash)
-![Theme](https://img.shields.io/badge/Theme-Catppuccin%20Mocha-f5c2e7?style=flat-square)
-![Made with Love](https://img.shields.io/badge/Made%20with-❤️-f38ba8?style=flat-square)
+<br>
+
+<!-- 技术栈徽章 (统一 Catppuccin Mocha 风格) -->
+<img src="https://img.shields.io/badge/Arch_Linux-313244?style=for-the-badge&logo=arch-linux&logoColor=89b4fa" />
+<img src="https://img.shields.io/badge/Openbox-313244?style=for-the-badge&logo=xorg&logoColor=cdd6f4" />
+<img src="https://img.shields.io/badge/Fish_Shell-313244?style=for-the-badge&logo=gnu-bash&logoColor=a6e3a1" />
+<img src="https://img.shields.io/badge/Catppuccin-313244?style=for-the-badge&logo=palette&logoColor=f5c2e7" />
 
 </div>
 
