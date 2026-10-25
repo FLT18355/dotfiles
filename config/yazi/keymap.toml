@@ -7,6 +7,7 @@ keymap = [
   # =======================
   { on = [ "U" ], run = "shell --block 'sh $HOME/.config/yazi/scripts/update_config.sh'", desc = "从 Git 强制更新 Yazi 配置" },
 
+
   # =======================
   # 目录跳转与操作
   # =======================
@@ -19,17 +20,11 @@ keymap = [
   { on = [ "g", "w" ], run = "cd ~/Documents/", desc = "文档" },
   { on = [ "g", "u" ], run = "cd ~/Public/", desc = "公共目录" },
   { on = [ "g", "t" ], run = "plugin trash", desc = "回收站" },
-  { on = [ "g", "T" ], run = "cd ~/Templates/", desc = "模板" },
   { on = [ "g", "c" ], run = "cd ~/.config/", desc = "~/.config 目录" },
   { on = [ "g", "l" ], run = "cd ~/.local/", desc = "~/.local 目录" },
   { on = [ "g", "<Space>" ], run = "cd --interactive", desc = "交互式目录" },
   { on = [ "g", "f" ], run = "follow", desc = "符号链接" },
 
-
-  #=======================
-  #回收站管理
-  #=======================
-  { on = ["R","b"], run = "plugin recycle-bin", desc = "回收站管理" },
 
   # =======================
   # GVFS相关操作
@@ -44,13 +39,22 @@ keymap = [
   { on = [ "G", "m" ], run = "plugin gvfs -- jump-to-device --automount", desc = "跳转到设备挂载点" },
   { on = [ "`", "`" ], run = "plugin gvfs -- jump-back-prev-cwd", desc = "跳回上一个目录" },
 
+
   # =======================
-  # 书签 (bookmarks)
+  # 书签 (yamb)
   # =======================
-  { on = "[", run = "plugin bookmarks save", desc = "保存当前位置为书签" },
-  { on = "]", run = "plugin bookmarks jump", desc = "跳转到书签" },
-  { on = [ "\\", "d" ], run = "plugin bookmarks delete", desc = "删除书签" },
-  { on = [ "\\", "D" ], run = "plugin bookmarks delete_all", desc = "删除所有书签" },
+  { on = "[", run = "plugin yamb -- save", desc = "保存当前位置为书签" },
+  { on = "]", run = "plugin yamb -- jump_by_key", desc = "跳转到书签" },
+  # \ 前缀：README 里的 u 映射过来，8 个动作全绑
+  { on = [ "\\", "g" ], run = "plugin yamb -- jump_by_key", desc = "书签:按键跳转(同 ])" },
+  { on = [ "\\", "d" ], run = "plugin yamb -- delete_by_key", desc = "书签:按键删除" },
+  { on = [ "\\", "r" ], run = "plugin yamb -- rename_by_key", desc = "书签:按键重命名" },
+  { on = [ "\\", "G" ], run = "plugin yamb -- jump_by_fzf", desc = "书签:fzf 跳转" },
+  { on = [ "\\", "D" ], run = "plugin yamb -- delete_by_fzf", desc = "书签:fzf 删除" },
+  { on = [ "\\", "R" ], run = "plugin yamb -- rename_by_fzf", desc = "书签:fzf 重命名" },
+  { on = [ "\\", "a" ], run = "plugin yamb -- save", desc = "书签:添加(同 [)" },
+  { on = [ "\\", "A" ], run = "plugin yamb -- delete_all", desc = "书签:删除所有" },
+
 
   # =======================
   # 压缩文件
@@ -104,7 +108,6 @@ keymap = [
   { on = "=", run = "tab_switch 1 --relative",  desc = "下一个标签页" },
   { on = "_", run = "tab_swap -1", desc = "与上一个标签页交换位置" },
   { on = "+", run = "tab_swap 1",  desc = "与下一个标签页交换位置" },
-
   { on = "<Esc>", run = "escape",             desc = "退出视觉模式,清除选择或取消搜索" },
   { on = "<C-[>", run = "escape",             desc = "退出视觉模式,清除选择或取消搜索" },
   { on = "q",     run = "quit",               desc = "退出程序" },
@@ -113,6 +116,7 @@ keymap = [
   { on = [ "t", "r" ], run = "tab_rename --interactive", desc = "重命名当前标签页" },
   { on = [ "t", "q" ], run = "close",              desc = "关闭当前标签页，如是最后一个则退出" },
   { on = "<C-z>", run = "suspend",            desc = "挂起程序" },
+
 
   # =======================
   # 光标移动(与vim一致)
@@ -154,6 +158,7 @@ keymap = [
   { on = "v", run = "visual_mode",         desc = "视觉模式(选择模式)" },
   { on = "V", run = "visual_mode --unset", desc = "视觉模式(取消模式)" },
 
+
   # =======================
   # 预览控制
   # =======================
@@ -186,6 +191,7 @@ keymap = [
   { on = ";",         run = "shell --interactive",         desc = "运行交互式shell命令" },
   { on = ":",         run = "shell --block --interactive", desc = "运行阻塞式shell命令" },
 
+
   #================
   #重命名
   #================
@@ -194,7 +200,6 @@ keymap = [
   { on = ["r","i"], run = "rename -- --cursor=start", desc = "重命名文件(光标在文件名开头)" },
   { on = ["r","a"], run = "rename -- --cursor=end", desc = "重命名文件(光标在文件名末尾)" },
   { on = ["r","c"], run = "rename -- --empty=all", desc = "重命名文件并清空整个文件名" },
-
 
 
   # =======================
@@ -229,10 +234,13 @@ keymap = [
   { on = "~", run = "help", desc = "帮助" },
   { on = "<C-F1>", run = "help", desc = "帮助" },
 
+
   # =======================
   # 挂载硬盘
   # =======================
   { on  = ["M","p"],run = "plugin mount", desc = "挂载硬盘" },
+  
+
   # =======================
   # 默认键位中文化（功能与 Yazi 默认完全一致，仅把说明翻成中文）
   # =======================
@@ -275,6 +283,7 @@ keymap = [
 	{ on = "<F1>", run = "help", desc = "帮助" },
 ]
 
+
 # ==================== 聚焦模式键位配置 ====================
 [spot]
 keymap = [
@@ -298,6 +307,7 @@ keymap = [
 	{ on = "<F1>", run = "help", desc = "帮助" },
 ]
 
+
 # ==================== 选择器键位配置 ====================
 [pick]
 keymap = [
@@ -315,6 +325,7 @@ keymap = [
 	{ on = "<F1>", run = "help", desc = "帮助" },
 ]
 
+
 # ==================== 输入模式键位配置 ====================
 [input]
 keymap = [
@@ -322,6 +333,7 @@ keymap = [
 	{ on = "<Enter>", run = "close --submit", desc = "提交输入" },
 	{ on = "<Esc>",   run = "escape",         desc = "返回普通模式或取消输入" },
 	{ on = "<C-[>",   run = "escape",         desc = "返回普通模式或取消输入" },
+
 
 	# =======================
 	# 模式切换
@@ -333,12 +345,14 @@ keymap = [
 	{ on = "v", run = "visual",                          desc = "进入视觉模式" },
 	{ on = "r", run = "replace",                         desc = "替换单个字符" },
 
+
 	# =======================
 	# 选择操作
 	# =======================
 	{ on = "V",     run = [ "move bol", "visual", "move eol" ], desc = "选择从行首到行尾" },
 	{ on = "<C-A>", run = [ "move eol", "visual", "move bol" ], desc = "选择从行尾到行首" },
 	{ on = "<C-E>", run = [ "move bol", "visual", "move eol" ], desc = "选择从行首到行尾" },
+
 
 	# =======================
 	# 历史记录（上/下翻之前的输入）
@@ -350,6 +364,7 @@ keymap = [
 	{ on = "k",      run = "recall -1", desc = "上一条历史输入" },
 	{ on = "j",      run = "recall 1",  desc = "下一条历史输入" },
 
+
 	# =======================
 	# 光标移动(字符级)
 	# =======================
@@ -359,6 +374,7 @@ keymap = [
 	{ on = "<Right>", run = "move 1",  desc = "向右移动一个字符" },
 	{ on = "<C-b>",   run = "move -1", desc = "向左移动一个字符" },
 	{ on = "<C-f>",   run = "move 1",  desc = "向右移动一个字符" },
+
 
 	# =======================
 	# 光标移动(单词级)
@@ -374,6 +390,7 @@ keymap = [
 	{ on = "<C-Left>",  run = "backward",                    desc = "移动到当前/上一个单词开头" },
 	{ on = "<C-Right>", run = "forward --end-of-word",       desc = "移动到当前/下一个单词结尾" },
 
+
 	# =======================
 	# 光标移动(行级)
 	# =======================
@@ -386,6 +403,7 @@ keymap = [
 	{ on = "<Home>", run = "move bol",        desc = "移动到行首" },
 	{ on = "<End>",  run = "move eol",        desc = "移动到行尾" },
 
+
 	# =======================
 	# 删除操作
 	# =======================
@@ -393,6 +411,7 @@ keymap = [
 	{ on = "<Delete>",    run = "backspace --under", desc = "删除光标下字符" },
 	{ on = "<C-h>",       run = "backspace",         desc = "删除光标前字符" },
 	{ on = "<C-d>",       run = "backspace --under", desc = "删除光标下字符" },
+
 
 	# =======================
 	# 剪切操作
@@ -403,6 +422,7 @@ keymap = [
 	{ on = "<A-d>",         run = "kill forward",  desc = "剪切到当前单词结尾" },
 	{ on = "<C-Backspace>", run = "kill backward", desc = "剪切到当前单词开头" },
 	{ on = "<C-Delete>",    run = "kill forward",  desc = "剪切到当前单词结尾" },
+
 
 	# =======================
 	# 剪切/复制/粘贴
@@ -418,6 +438,7 @@ keymap = [
 	{ on = "p", run = "paste",                                             desc = "粘贴到光标后" },
 	{ on = "P", run = "paste --before",                                    desc = "粘贴到光标前" },
 
+
 	# =======================
 	# 撤销/重做/大小写转换
 	# =======================
@@ -428,6 +449,7 @@ keymap = [
 	{ on = "~",    run = "help", desc = "打开帮助" },
 	{ on = "<F1>", run = "help", desc = "打开帮助" },
 ]
+
 
 # ==================== 确认对话框键位配置 ====================
 [confirm]
@@ -448,6 +470,7 @@ keymap = [
 	{ on = "~",    run = "help", desc = "帮助" },
 	{ on = "<F1>", run = "help", desc = "帮助" },
 ]
+
 
 # ==================== 补全模式键位配置 ====================
 [cmp]

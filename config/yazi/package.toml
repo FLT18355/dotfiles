@@ -5,13 +5,13 @@ hash = "3dece6f30d75e80782c9851e5016dcf"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "9166202"
-hash = "f281261ff04ad7ec867c3f802a50835f"
+rev = "e0bbd20"
+hash = "17ebde15c4349f90aedbc45984b98db2"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:mount"
-rev = "9166202"
-hash = "b95f898e6dc60b52edbc415952e14395"
+rev = "e0bbd20"
+hash = "ba1a606728adb75b091b6eaf3fd60372"
 
 [[plugin.deps]]
 use = "Rolv-Apneseth/starship"
@@ -55,13 +55,8 @@ hash = "38b093d444efe1386e0e959aa5be11f8"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-enter"
-rev = "9166202"
+rev = "e0bbd20"
 hash = "187cc58ba7ac3befd49c342129e6f1b6"
-
-[[plugin.deps]]
-use = "uhs-robert/recycle-bin"
-rev = "fe48a02"
-hash = "edd449b02a169bd8fee052be96a31823"
 
 [[plugin.deps]]
 use = "linxuan-sys/docx-preview"
@@ -70,13 +65,13 @@ hash = "b196b90e3fecda291756a3f795f0746b"
 
 [[plugin.deps]]
 use = "AminurAlam/yazi-plugins:preview-typst"
-rev = "7d8ead5"
-hash = "2aacd8b872663cc36ac6c5bf6b6dc867"
+rev = "72bdb41"
+hash = "b51195fb14479a22751230b638830097"
 
 [[plugin.deps]]
-use = "dedukun/bookmarks"
-rev = "9ef1254"
-hash = "92fbb5483657fa7976cdf4e0104e18e0"
+use = "h-hg/yamb"
+rev = "971b858"
+hash = "da4534745930e827a44d4585bbd965eb"
 
 [[flavor.deps]]
 use = "yazi-rs/flavors:dracula"

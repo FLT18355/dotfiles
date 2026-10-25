@@ -19,8 +19,7 @@
 | `gvfs` | 挂载 MTP / SMB / SFTP / WebDAV 等设备与远程存储 | `M` 系列、`G m`；依赖 `gvfs`、`glib` |
 | `mount` | 本地磁盘分区挂载 / 卸载 / 弹出 | `M p`；依赖 `udisks2`、`util-linux` |
 | `ouch` | 压缩 / 解压（自动适配格式） | `c z`；依赖 `ouch` |
-| `recycle-bin` | 回收站管理：浏览、恢复、彻底删除、按天数清理 | `R b`；依赖 `trash-cli` |
-| `bookmarks` | 书签管理：vim 风格 mark，持久化保存 | `[` 存、`]` 跳、`\ d` 删、`\ D` 清空；无额外依赖 |
+| `yamb` | 书签管理：持久化保存、按键跳转、fzf 搜索、重命名 | `[` 存、`]` 跳、`\g` 跳、`\r` 改名、`\d` 删、`\G`/`\D`/`\R` 走 fzf、`\a` 存、`\A` 清空；fzf 功能依赖 `fzf` |
 | `bypass` | 自动穿透「只有一个子目录」的目录链 | 配合 `→` 使用 |
 | `smart-enter` | 目录则进入、文件则打开的「二合一」动作 | 通过 `bypass` 调用 |
 | `augment-command` | 增强命令：选中后自动下移（不循环）等 | `<Space>` 选中后下移 |
@@ -45,22 +44,26 @@
    （用法：`y` 选中文件 → 跳到目标目录 → 按对应符号）
 
 2. **`g t` 为回收站**
-   进入 Yazi 内置回收站视图（`plugin trash`）；Templates 挪到 `g T`，另配 `R b` 调用
-   `recycle-bin` 插件做浏览、恢复与清理。
+   进入 Yazi 内置回收站视图（`plugin trash`）；Templates 没用删了。
+   回收站里按 `O`（`open --interactive`）弹出菜单，可选 `Restore selected files`
+   恢复条目或 `Empty trash bin` 清空；按 `D` 永久删除选中条目。
 
 3. **标签页操作**
-   - `-` / `=`：上一个 / 下一个标签页（默认是 `[` / `]`）
+   - `-` / `=`：上一个 / 下一个标签页（默认是 `[` / `]`，这两个键已让给书签插件）
    - `_` / `+`：与上一个 / 下一个标签交换位置（默认是 `{` / `}`）
    - `1`~`9`：直接切换到第 N 个标签
    - `t q`：关闭当前标签（默认是 `<C-c>`，改绑以免与终端「中断」习惯冲突；最后一个标签时退出）
    - `t t` 新建标签、`t r` 重命名标签
    - `}` 因此空置，不再占用
 
-4. **书签改用 `bookmarks` 插件**
-   - `[`：保存当前位置为书签
-   - `]`：跳转到书签（目录直接 `cd`，文件则 `reveal` 定位）
-   - `\ d`：删除单个书签；`\ D`：清空全部书签
-   - 持久化由 Yazi DDS 负责（`~/.local/state/yazi/.dds`），配置了 `persist = "all"`，重启不丢
+4. **书签改用 `yamb` 插件**（原 `bookmarks` 插件因 `ya.mgr_emit` 被 Yazi 移除而失效）
+   - `[` / `\a`：保存当前位置为书签（依次填 tag、key，key 留空会自动分配一个未占用的键）
+   - `]` / `\g`：按键跳转（目录直接 `cd`，文件则 `reveal` 定位）
+   - `\r`：按键重命名（改 tag，或改绑到别的键）
+   - `\d`：按键删除单条；`\A`：清空全部（需输入 `y` 确认）
+   - `\G` / `\D` / `\R`：跳转 / 删除 / 重命名的 fzf 版本，书签多了记不住键时用
+   - 持久化为纯文本 `~/.config/yazi/bookmark`（每行 `tag<TAB>路径<TAB>键`，路径以 `/`
+     结尾表示目录），每次保存或删除立刻写入，不再依赖 Yazi DDS
 
 5. **键位表改为「覆盖式」**：`[mgr]` 段使用 `keymap` 而非默认的 `prepend_keymap`，
    即**不再加载 Yazi 内置默认键位**，所有按键都在配置里显式列出（更方便汉化，也避免出现
@@ -80,25 +83,64 @@
    - 支持 `o o` / `p p` 双键前缀写法，`p f` 强制粘贴
    - 重命名提供多种光标位置：`r r`（扩展名前）、`r f`（清空）、`r i`（开头）、`r a`（末尾）、`r c`（清空）
    - 复制路径改用新语法（`c c` / `c d` / `c f` / `c n`），另有 `c m` 清空主名重命名、`c r` 创建
-   - `U` 一键从 Git 强制更新本配置（`scripts/update_config.sh`）
+   - `U` 一键从 Git 强制更新本配置（`scripts/update_config.sh`，详见第六节）
    - `yazi.toml`：按扩展名排序、行模式显示创建时间、显示隐藏文件、预览自动换行、
      图像缩放用 `lanczos3`、图片任务内存上限 1 GiB，并为 mediainfo / duckdb /
      docx-preview / preview-typst 注册了 preloader 与 previewer 规则
-   - `theme.toml` 为手写 Material 风格深色主题；图标依赖 Nerd Font
+   - `theme.toml` 只保留 `[flavor]` 段引用上游主题包（见第三节），图标依赖 Nerd Font
 
 ---
 
-## 三、汉化说明
+## 三、主题换肤
+
+配置里备了两个上游主题包（flavor），都在 `package.toml` 的 `[[flavor.deps]]` 中，
+`ya pkg install` 时自动下载到 `flavors/`：
+
+| flavor | 风格 |
+| :--- | :--- |
+| `catppuccin-mocha` | Catppuccin 深色版，柔和粉紫、低饱和，长时间看不刺眼 |
+| `dracula` | Dracula 经典配色，紫底 + 青/粉/黄高对比，辨识度高 |
+
+### 怎么切换
+
+主题的指定只能写在 `theme.toml` 里，并且**必须把原来的配色内容整段删掉**，只留 `[flavor]`：
+
+```toml
+[flavor]
+dark = "dracula"
+light = "dracula"
+```
+
+换另一个就把名字改成 `catppuccin-mocha`，然后重开 Yazi 生效。
+
+> 关键点：`theme.toml` 的优先级**高于** flavor。只要文件里还留着 `[mgr]`、`[status]`、
+> `[filetype]` 之类的配色段，它们就会把主题包的颜色盖回去，等于换肤没生效。
+> 所以切主题时不是「加一段 flavor」，而是「清空旧配色 + 只写 flavor」。
+
+### 恢复手写主题
+
+仓库历史里保存着完整的手写 Material 风格深色主题（282 行），执行：
+
+```bash
+git checkout theme.toml
+```
+
+临时试主题的话，建议先把现有文件挪走（`mv theme.toml theme.toml.bak`）再写新的，
+试完换回来即可。
+
+---
+
+## 四、汉化说明
 
 - `keymap.toml` 中**所有快捷键的说明（`desc`）均已翻译为中文**，包括原本是英文的默认键
   （`G`、`Home`/`End`、`H`/`J`/`K`/`L`、`o`/`p`/`P`、`Ctrl+-`、`r`、`<F1>` 等）。
 - 因此按 `~` 打开帮助面板、或按前缀键（如 `\`、`g`、`M`、`c`）弹出的按键提示，显示的都是中文。
-- 插件自身的少数运行提示仍为英文（由上游插件决定），例如 `bookmarks` 保存时弹出的键位选择、
-  自定义描述输入框标题。
+- 插件自身的少数运行提示仍为英文（由上游插件决定），例如 `yamb` 保存时弹出的
+  `Tag (alias name)` / `Key (1 character, optional)` 输入框标题，以及 `"xxx" saved` 提示。
 
 ---
 
-## 四、安装
+## 五、安装
 
 ```bash
 # 1. 备份原配置
@@ -120,7 +162,7 @@ yazi
 ```bash
 # Arch Linux
 sudo pacman -S pandoc-cli duckdb mediainfo ffmpeg imagemagick typst \
-  starship trash-cli ouch 7zip file gvfs glib2 util-linux fzf zoxide
+  starship ouch 7zip file gvfs glib2 util-linux fzf zoxide
 ```
 
 其中 `fzf` 与 `zoxide` 对应 Yazi 内置插件，分别供 `z`（fzf 跳转）和 `Z`（zoxide 跳目录）使用。
@@ -131,7 +173,40 @@ sudo pacman -S pandoc-cli duckdb mediainfo ffmpeg imagemagick typst \
 
 ---
 
-## 五、说明
+## 六、更新
+
+在 Yazi 里按大写 **`U`**，会运行 `scripts/update_config.sh`，把本配置强制同步到作者仓库的最新版本。
+
+流程：
+
+1. 先弹确认提示：`你确定要强制覆盖本地 Yazi 配置吗? (y/N)`
+2. 按 **`y`** 继续；按 `N`、回车或其他键则取消
+3. `git fetch --all` 拉取作者最新提交
+4. `git reset --hard origin/main` **强制覆盖本地所有已跟踪文件**——`keymap.toml`、`theme.toml`、
+   `init.lua`、`yazi.toml`、`package.toml` 等全部变回仓库版本，你自己的改动一律丢弃
+5. `git clean -fd` **删除所有未跟踪的文件和目录**
+6. 结束前提示 `按回车键继续`，回车后回到 Yazi
+
+⚠️ **更新前请先备份重要改动**。它不会自动备份，也不会再问你第二次：
+
+```bash
+# 方式一：整目录备份（最稳）
+cp -r ~/.config/yazi ~/.config/yazi.bak
+
+# 方式二：把本地改动提交成一个 commit，之后还能用 git 找回来
+cd ~/.config/yazi && git add -A && git commit -m "我的本地改动"
+```
+
+特别注意，下面这些会被第 5 步的 `git clean -fd` 删掉，因为它们没有被 Git 跟踪：
+
+- **书签数据**：`~/.config/yazi/bookmark`（`yamb` 插件的全部书签就存在这个文件里）
+- 自己手动放进去的其他文件或目录（自改脚本、临时备份等）
+
+更新完成后，如果 `package.toml` 里的插件有增删，再执行一次 `ya pkg install` 补齐。
+
+---
+
+## 七、说明
 
 - 配置部分（`yazi.toml` / `keymap.toml` / `init.lua` / `theme.toml`）以 **MIT License** 发布，见 [`LICENSE`](./LICENSE)。
 - `plugins/` 与 `flavors/` 为上游开源项目的副本，版权归各自作者所有。

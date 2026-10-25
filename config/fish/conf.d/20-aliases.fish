@@ -45,19 +45,13 @@ alias un7z="7z x"
 
 # ---- 开发工具 ----
 alias py="python3"
-alias py3="python3"
-alias py2="python2"
-alias ipy="ipython"
 alias vi="nvim"
-alias code="/home/flt18355/Downloads/VSCode-linux-arm64/code --no-sandbox"
-alias vs='python -m visidata'
 alias grep="grep --color=auto"
 
 # ---- 下载工具 ----
 alias wget="wget --show-progress"
 alias curl-head="curl -I"
 alias down="aria2c -x 16 -s 16"
-alias bili="yt-dlp --cookies /home/flt18355/cookies.txt"
 
 # ---- Git (缩写未覆盖的) ----
 alias gs='git status'
@@ -66,14 +60,11 @@ alias ggap='git gc --aggressive --prune=now'
 alias gsh='grun --shell'
 
 # ---- 系统维护 ----
-alias sync="sync && echo '同步完成'"
-alias reboot="reboot"
 alias poweroff="poweroff"
 alias df="df -h"
 alias du="du -h"
 alias du-max="du -sh * | sort -hr"
-alias clear='/usr/bin/clear'
-alias cl='clear && echo "󰄛 打扫干净啦！" && ci'
+alias cl='clear'
 alias maint='python3 ~/Daily/tools/sysmaint.py'
 
 # ---- 搜索 ----
@@ -83,7 +74,6 @@ alias fcode="grep -r --include='*.{py,js,c}'"
 # ---- 工具 ----
 alias glow='glow -s ~/.config/glow/catppuccin-mocha.json'
 alias vfishrc="vim ~/.config/fish/config.fish && ci"
-alias lf="yazi"
 alias ncat='nyancat'
 alias tldr='tldr -L zh'
 alias ffc='fastfetch'

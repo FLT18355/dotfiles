@@ -5,24 +5,9 @@ require("starship"):setup()
 require("simple-status"):setup()
 
 
-require("bookmarks"):setup({
-  -- 持久化所有书签（默认 none，重启即丢失，必须改 all）
-  persist = "all",
-  -- 跳转列表里附带"上一个目录"
-  last_directory = { enable = true, mode = "dir" },
-  desc_format = "full",
-  file_pick_mode = "hover",
-  custom_desc_input = false,
-  show_keys = true,
-  notify = {
-    enable = true,
-    timeout = 1,
-    message = {
-      new = "新书签 '<key>' -> '<folder>'",
-      delete = "已删除 '<key>' 的书签",
-      delete_all = "已删除所有书签",
-    },
-  },
+require("yamb"):setup({
+  -- 每次跳转后弹提示
+  jump_notify = true,
 })
 
 
@@ -73,7 +58,5 @@ require("gvfs"):setup({
   -- Use command `ps aux | grep gvfs` to search for gvfs process and get the mountpoint path.
   -- root_mountpoint = (os.getenv("XDG_RUNTIME_DIR") or ("/run/user/" .. ya.uid())) .. "/gvfs"
 })
-
-require("recycle-bin"):setup()
 
 require("duckdb"):setup()
