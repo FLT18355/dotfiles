@@ -11,7 +11,7 @@ set -gx PATH $PATH $HOME/go/bin
 set -gx PATH $PATH $HOME/.cargo/bin
 set -gx PATH $PATH $HOME/.local/bin
 fish_add_path ~/bin
-fish_add_path /home/flt18355/.opencode/bin
+fish_add_path ~/.opencode/bin
 
 # Bat
 set -gx BAT_THEME "Catppuccin Mocha"

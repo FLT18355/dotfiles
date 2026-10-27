@@ -43,7 +43,15 @@ run() {
     "$@" || printf '\033[31m失败: %s\033[0m\n' "$desc"
 }
 
-all=(pip uv npm pnpm yarn bun go gem conda cargo pacman yay paru)
+all=(pip pip3 uv npm pnpm yarn bun go gem conda cargo pacman yay paru)
+
+# 传入的管理器名必须是已知的，避免拼错后一声不响什么都没做
+for m in "${selected[@]}"; do
+    if [[ " ${all[*]} " != *" $m "* ]]; then
+        echo "未知管理器: $m（可用: ${all[*]}）" >&2
+        exit 1
+    fi
+done
 
 # 没有指定管理器且未加 -y 时，逐个询问
 if (( !yes && !dry && ${#selected[@]} == 0 )); then
@@ -60,7 +68,13 @@ if (( !yes && !dry && ${#selected[@]} == 0 )); then
     selected=("${chosen[@]}")
 fi
 
-want pip && has pip && run "pip 缓存" pip cache purge
+if want pip || want pip3; then
+    if has pip3; then
+        run "pip 缓存" pip3 cache purge
+    elif has pip; then
+        run "pip 缓存" pip cache purge
+    fi
+fi
 want uv && has uv && run "uv 缓存" uv cache clean
 want npm && has npm && run "npm 缓存" npm cache clean --force
 want pnpm && has pnpm && run "pnpm 缓存" pnpm store prune

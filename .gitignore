@@ -1,0 +1,10 @@
+# 运行时生成的本机状态，不进仓库
+config/fish/fish_variables
+config/herdr/plugins.json
+
+# Python
+__pycache__/
+*.pyc
+
+# 安装脚本备份
+*.bak.*

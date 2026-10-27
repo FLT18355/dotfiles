@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-import os
 import sys
 import urllib.request
 import json
+import hashlib
 from pathlib import Path
 
 try:
@@ -22,7 +22,7 @@ TARGET_FILE = INSTALL_DIR / "herdr"
 
 def main():
     console.print(f"[cyan]🔍 正在获取 {REPO} 的最新版本信息...[/cyan]")
-    
+
     # 1. 获取最新 Release 信息
     api_url = f"{PROXY}https://api.github.com/repos/{REPO}/releases/latest"
     try:
@@ -35,11 +35,13 @@ def main():
 
     tag_name = data.get("tag_name", "Unknown")
     download_url = None
-    
+    asset_digest = None
+
     # 2. 解析下载链接
     for asset in data.get("assets", []):
         if TARGET_ARCH in asset.get("name", ""):
             download_url = asset.get("browser_download_url")
+            asset_digest = asset.get("digest")  # 形如 sha256:...
             break
 
     if not download_url:
@@ -53,13 +55,14 @@ def main():
     # 3. 确保目录存在
     INSTALL_DIR.mkdir(parents=True, exist_ok=True)
 
-    # 4. 带进度条下载
+    # 4. 带进度条下载到临时文件，校验后再原子替换
     console.print("[yellow]⬇️ 开始下载...[/yellow]")
+    tmp_file_path = TARGET_FILE.with_name(TARGET_FILE.name + ".tmp")
     try:
         req = urllib.request.Request(accel_url, headers={"User-Agent": "Python-Updater"})
         with urllib.request.urlopen(req) as response:
             total_size = int(response.info().get("Content-Length", 0))
-            
+
             with Progress(
                 TextColumn("[bold blue]{task.fields[filename]}", justify="right"),
                 BarColumn(),
@@ -69,23 +72,36 @@ def main():
                 console=console
             ) as progress:
                 task = progress.add_task("下载中...", total=total_size, filename="herdr")
-                
-                with open(TARGET_FILE, "wb") as f:
+
+                with open(tmp_file_path, "wb") as f:
                     while True:
                         chunk = response.read(8192)
                         if not chunk:
                             break
                         f.write(chunk)
                         progress.update(task, advance=len(chunk))
-        
-        # 5. 赋予执行权限
-        TARGET_FILE.chmod(0o755)
+
+        # 5. 校验 sha256，防止中转站或链路被篡改
+        console.print("[yellow]🔐 正在校验 sha256...[/yellow]")
+        if not asset_digest:
+            raise Exception("该 Release 未提供 digest，无法校验，已中止")
+        h = hashlib.sha256()
+        with open(tmp_file_path, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 20), b""):
+                h.update(chunk)
+        actual = "sha256:" + h.hexdigest()
+        if actual != asset_digest:
+            raise Exception(f"sha256 校验失败: 期望 {asset_digest}, 实际 {actual}")
+
+        # 6. 赋予执行权限并原子替换
+        tmp_file_path.chmod(0o755)
+        tmp_file_path.replace(TARGET_FILE)
         console.print(f"[bold green]🎉 更新成功! 已安装到: {TARGET_FILE}[/bold green]")
-        
+
     except Exception as e:
         console.print(f"[red]❌ 下载失败: {e}[/red]")
-        if TARGET_FILE.exists():
-            TARGET_FILE.unlink()  # 清理破损文件
+        if tmp_file_path.exists():
+            tmp_file_path.unlink()  # 只删临时文件，原二进制不受影响
         sys.exit(1)
 
 if __name__ == "__main__":
