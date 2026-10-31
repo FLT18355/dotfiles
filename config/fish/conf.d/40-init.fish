@@ -4,6 +4,7 @@
 
 fzf --fish | source
 eval "$(starship init fish)"
+enable_transience
 fish_config theme choose catppuccin-mocha
 # posh init fish --config ~/Daily/git/catppuccin.omp/mocha.omp.json | source
 

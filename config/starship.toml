@@ -15,20 +15,14 @@ $rust\
 $golang\
 $nodejs\
 $bun\
-$php\
-$java\
-$kotlin\
-$haskell\
 $python\
 [](fg:green bg:sapphire)\
 $conda\
 [](fg:sapphire bg:lavender)\
 $time\
-[](fg:lavender bg:green)\
-$cmd_duration\
-[ ](fg:green)\
+[ ](fg:lavender)\
 $line_break\
-\n\
+$cmd_duration\
 $character"""
 
 palette = 'catppuccin_mocha'
@@ -38,26 +32,7 @@ disabled = false
 style = "bg:red fg:crust"
 
 [os.symbols]
-Windows = ""
-Ubuntu = "󰕈"
-SUSE = ""
-Raspbian = "󰐿"
-Mint = "󰣭"
-Macos = "󰀵"
-Manjaro = ""
-Linux = " 󰣇"
-Gentoo = "󰣨"
-Fedora = "󰣛"
-Alpine = ""
-Amazon = ""
-Android = ""
-AOSC = ""
 Arch = "󰣇"
-Artix = "󰣇"
-CentOS = ""
-Debian = "󰣚"
-Redhat = "󱄛"
-RedHatEnterprise = "󱄛"
 
 [username]
 show_always = true
@@ -71,13 +46,6 @@ format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "🐾…/"
 
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
-"Developer" = "󰲋 "
-
 [git_branch]
 symbol = ""
 style = "bg:yellow"
@@ -87,91 +55,57 @@ format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
 style = "bg:yellow"
 format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
 
+# ================= 语言段：带版本号 =================
 [nodejs]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
+format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
 
 [bun]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
+format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
 
 [c]
 symbol = " "
 style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
+format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
+format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
-
-[php]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
-
-[java]
-symbol = " "
-style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
-
-[kotlin]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
-
-[haskell]
-symbol = ""
-style = "bg:green"
-format = '[[ $symbol 喵 $version ](fg:crust bg:green)]($style)'
+format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
 
 [python]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol 喵 $version(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
-
-[docker_context]
-symbol = ""
-style = "bg:sapphire"
-format = '[[ $symbol 汪 $context ](fg:crust bg:sapphire)]($style)'
-
-[conda]
-symbol = "  "
-style = "fg:crust bg:sapphire"
-format = '[$symbol$environment ]($style)'
-ignore_base = false
+format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
 style = "bg:lavender"
-format = '[[ 󱑎 现在 $time 喵 ](fg:crust bg:lavender)]($style)'
+format = '[[ 󱑎 $time 喵 ](fg:crust bg:lavender)]($style)'
 
 [line_break]
-disabled = true
+disabled = false
 
 [character]
 disabled = false
 success_symbol = '[❯](bold fg:green)'
 error_symbol = '[❯ 喵呜>_<](bold fg:red)'
-vimcmd_symbol = '[❮](bold fg:green)'
-vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
-vimcmd_replace_symbol = '[❮](bold fg:lavender)'
-vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 
+# 耗时模块：取消毫秒，仅保留秒数，用方括号与提示符隔开
 [cmd_duration]
-show_milliseconds = true
-format = " 󱦟 耗时 $duration 喵~ "
-style = "bg:green"
+show_milliseconds = false
+format = "[ 󱦟 $duration ]($style)"
+style = "fg:green"
 disabled = false
-show_notifications = true
 min_time_to_notify = 45000
 
 [palettes.catppuccin_mocha]
