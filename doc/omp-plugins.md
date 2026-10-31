@@ -13,3 +13,4 @@
 
 - **ponytail**
   防过度设计，强制 AI 遵循极简原则，少写不必要的代码。
+  (omp plugin marketplace add DietrichGebert/ponytail, omp plugin install ponytail@ponytail)

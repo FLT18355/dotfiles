@@ -48,6 +48,8 @@ cd dotfiles
 映射规则：`config/*` → `~/.config/*`，`.local/*/*` → `~/.local/*/*`。
 脚本（`scripts/`）不会自动安装，按需自行复制或加到 PATH。
 
+当前项目适合直接让AI部署, 可以让AI读doc/
+
 ## 🧹 清理包管理器缓存
 
 ```bash
