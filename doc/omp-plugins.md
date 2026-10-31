@@ -14,3 +14,6 @@
 - **ponytail**
   防过度设计，强制 AI 遵循极简原则，少写不必要的代码。
   (omp plugin marketplace add DietrichGebert/ponytail, omp plugin install ponytail@ponytail)
+
+- **pi-soul**
+  注入持久化的人格设定，保持特定的对话口吻。
