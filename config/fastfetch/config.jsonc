@@ -3,6 +3,7 @@
     "logo": {
         "source": "~/.config/fastfetch/images/*.png",
         "type": "kitty",
+        // "type": "auto",
         "height": 28,
         "padding": {
             "top": 1,
@@ -20,7 +21,7 @@
         // ================= 顶部：系统信息 =================
         {
             "type": "custom",
-            "format": "\u001b[38;2;180;190;254m  󰣇  SYSTEM & ENVIRONMENT\u001b[0m"
+            "format": "\u001b[38;2;180;190;254m  󰣇  本喵的系统喵~\u001b[0m"
         },
         {
             "type": "custom",
@@ -28,38 +29,38 @@
         },
         {
             "type": "os",
-            "key": "  󰣇 OS",
-            "keyColor": "blue" // 基础色，支持
+            "key": "  󰣇 系统喵",
+            "keyColor": "blue"
         },
         {
             "type": "kernel",
-            "key": "   Kernel",
+            "key": "   内核喵",
             "keyColor": "blue"
         },
         {
             "type": "packages",
-            "key": "  󰏗 Packages",
-            "keyColor": "green" // 基础色，支持
+            "key": "  󰏗 软糖包",
+            "keyColor": "green"
         },
         {
             "type": "wm",
-            "key": "   WM",
+            "key": "   窗口喵",
             "keyColor": "yellow"
         },
         {
             "type": "de",
-            "key": "   DE",
+            "key": "   桌面喵",
             "keyColor": "yellow"
         },
         {
             "type": "terminal",
-            "key": "   Terminal",
+            "key": "   终端喵",
             "format": "{1}",
-            "keyColor": "#94e2d5" // 改为十六进制: Catppuccin Teal
+            "keyColor": "#94e2d5"
         },
         {
             "type": "terminalfont",
-            "key": "   Font",
+            "key": "   字体喵",
             "keyColor": "#94e2d5"
         },
         {
@@ -71,7 +72,7 @@
         // ================= 中部：硬件与开发环境 =================
         {
             "type": "title",
-            "key": "   User"
+            "key": "   铲屎官"
         },
         {
             "type": "custom",
@@ -80,49 +81,49 @@
         {
             "type": "cpu",
             "format": "{1}",
-            "key": "   CPU",
-            "keyColor": "#cba6f7" // 改为十六进制: Catppuccin Mauve
+            "key": "   大脑喵",
+            "keyColor": "#cba6f7"
         },
         {
             "type": "gpu",
             "format": "{1} {2}",
-            "key": "  󰋵 GPU",
+            "key": "  󰋵 画图喵",
             "keyColor": "#cba6f7"
         },
         {
             "type": "memory",
-            "key": "  󰀚 Memory",
-            "keyColor": "#fab387" // 改为十六进制: Catppuccin Peach
+            "key": "  󰀚 记忆喵",
+            "keyColor": "#fab387"
         },
         {
             "type": "shell",
             "format": "{1} {4}",
-            "key": "   Shell",
+            "key": "   壳壳喵",
             "keyColor": "#fab387"
         },
         {
             "type": "command",
-            "key": "   Python",
+            "key": "   蟒蛇喵",
             "keyColor": "green",
             "text": "python --version",
             "output": "{1}"
         },
         {
             "type": "command",
-            "key": "   Node.js",
+            "key": "   节点喵",
             "keyColor": "green",
             "text": "node --version",
             "output": "{1}"
         },
         {
             "type": "host",
-            "key": "   Machine",
+            "key": "   机器喵",
             "format": "{name}{?vendor} ({vendor}){?}",
             "keyColor": "red"
         },
         {
             "type": "uptime",
-            "key": "  󱫐 Uptime",
+            "key": "  󱫐 醒着喵",
             "keyColor": "red"
         },
         {
@@ -134,7 +135,7 @@
         // ================= 底部：时间、年龄与色板 =================
         {
             "type": "custom",
-            "format": "\u001b[38;2;166;227;161m  󱫐  TIME & MISC\u001b[0m"
+            "format": "\u001b[38;2;166;227;161m  󱫐  时间与杂项喵~\u001b[0m"
         },
         {
             "type": "custom",
@@ -142,19 +143,19 @@
         },
         {
             "type": "datetime",
-            "key": "   Time",
+            "key": "   现在喵",
             "keyColor": "#94e2d5",
             "format": "{1}-{2}-{3} {4}:{5}"
         },
         {
             "type": "command",
-            "key": "  󱦟 OS Age",
+            "key": "  󱦟 几岁喵",
             "keyColor": "yellow",
-            "text": "install_date=$(date -d $(cat /etc/install-date) +%s); current=$(date +%s); echo $(( (current - install-date) / 86400 )) days"
+            "text": "install_date=$(date -d $(cat /etc/install-date) +%s); current=$(date +%s); echo $(( (current - install_date) / 86400 )) days"
         },
         {
             "type": "locale",
-            "key": "   Locale",
+            "key": "   语言喵",
             "keyColor": "blue"
         },
         {
