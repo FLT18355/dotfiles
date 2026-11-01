@@ -11,7 +11,7 @@ set -gx PATH $PATH $HOME/go/bin
 set -gx PATH $PATH $HOME/.cargo/bin
 set -gx PATH $PATH $HOME/.local/bin
 fish_add_path ~/bin
-fish_add_path ~/.opencode/bin
+fish_add_path /home/flt18355/.opencode/bin
 
 # Bat
 set -gx BAT_THEME "Catppuccin Mocha"
@@ -51,3 +51,6 @@ set -gx PULSE_SERVER 127.0.0.1
 # pip 镜像
 set -gx UV_DEFAULT_INDEX https://pypi.tuna.tsinghua.edu.cn/simple
 
+# Github Copilot Cli
+set -gx COPILOT_PROVIDER_BASE_URL https://apihub.agnes-ai.cn/v1
+set -gx COPILOT_MODEL agnes-2.5-flash

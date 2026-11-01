@@ -3,9 +3,12 @@
 # ============================================
 
 fzf --fish | source
+
 eval "$(starship init fish)"
 enable_transience
+
 fish_config theme choose catppuccin-mocha
+
 # posh init fish --config ~/Daily/git/catppuccin.omp/mocha.omp.json | source
 
 # Carapace 补全 (未启用)
@@ -18,4 +21,3 @@ zoxide init fish | source
 # set -g fish_key_bindings fish_vi_key_bindings
 
 set fish_greeting
-# ffc
