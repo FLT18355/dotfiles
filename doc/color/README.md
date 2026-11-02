@@ -1,3 +1,79 @@
 # Catppuccin Mocha (Soft)
 
-### 一个我的定制版Catppuccin Mocha
+### 一个我的定制版 Catppuccin Mocha
+
+以下包含纯 HEX 与 RGB 双格式，方便toml解析器调用。
+
+```toml
+[colors.background]
+hex = "#1e1e2e"
+rgb = [30, 30, 46]
+
+[colors.foreground]
+hex = "#bac2de"
+rgb = [186, 194, 222]
+
+[colors.black]
+hex = "#45475a"
+rgb = [69, 71, 90]
+
+[colors.red]
+hex = "#eb82a0"
+rgb = [235, 130, 160]
+
+[colors.green]
+hex = "#a0d79b"
+rgb = [160, 215, 155]
+
+[colors.yellow]
+hex = "#ebd7aa"
+rgb = [235, 215, 170]
+
+[colors.blue]
+hex = "#87afeb"
+rgb = [135, 175, 235]
+
+[colors.magenta]
+hex = "#c3a0f0"
+rgb = [195, 160, 240]
+
+[colors.cyan]
+hex = "#8cd7e1"
+rgb = [140, 215, 225]
+
+[colors.white]
+hex = "#bac2de"
+rgb = [186, 194, 222]
+
+[colors.bright_black]
+hex = "#585b70"
+rgb = [88, 91, 112]
+
+[colors.bright_red]
+hex = "#f38ba8"
+rgb = [243, 139, 168]
+
+[colors.bright_green]
+hex = "#a6e3a1"
+rgb = [166, 227, 161]
+
+[colors.bright_yellow]
+hex = "#f9e2af"
+rgb = [249, 226, 175]
+
+[colors.bright_blue]
+hex = "#89b4fa"
+rgb = [137, 180, 250]
+
+[colors.bright_magenta]
+hex = "#cba6f7"
+rgb = [203, 166, 247]
+
+[colors.bright_cyan]
+hex = "#94e2d5"
+rgb = [148, 226, 213]
+
+[colors.bright_white]
+hex = "#cdd6f4"
+rgb = [205, 214, 244]
+```
