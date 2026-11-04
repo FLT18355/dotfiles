@@ -21,3 +21,9 @@ zoxide init fish | source
 # set -g fish_key_bindings fish_vi_key_bindings
 
 set fish_greeting
+
+# Atuin
+set -gx ATUIN_NOBIND "true"
+atuin init fish | source
+bind ctrl-up _atuin_search
+bind -M insert ctrl-up _atuin_search
