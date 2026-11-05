@@ -1,0 +1,116 @@
+# ==========================================
+# 基础与同步设置
+# ==========================================
+dialect = "uk"
+timezone = "local"
+auto_sync = true
+update_check = true
+sync_frequency = "10m"
+search_mode = "fuzzy"
+filter_mode = "global"
+
+# ==========================================
+# 快捷键与 Shell 绑定
+# ==========================================
+# 选中后直接执行，而不是放回输入框
+enter_accept = true 
+# 支持在 &&、|| 和 | 之后的连续补全
+command_chaining = true 
+
+[keys]
+# 允许按左方向键退出搜索
+exit_past_line_start = true
+# 允许按右方向键接受命令并放入输入框
+accept_past_line_end = true
+
+# ==========================================
+# UI 与主题
+# ==========================================
+# 紧凑模式，不全屏显示
+style = "compact"
+# 搜索框置于顶部
+invert = true
+# 显示命令预览
+show_preview = true
+# 隐藏底部帮助行（可通过 ? 呼出）
+show_help = false
+
+[ui]
+# 开启语法高亮
+syntax_highlight = true
+# 自定义列显示：耗时、时间、工作目录、命令
+columns = ["duration", "time", { type = "directory", width = 25 }, "command"]
+
+[theme]
+# 可选内置主题：default, autumn, marine
+name = "default" 
+
+# ==========================================
+# 隐私与过滤
+# ==========================================
+# 开启内置的敏感信息过滤（如 Token、密码）
+secrets_filter = true
+
+# 不记录的命令（基于正则表达式匹配）
+history_filter = [
+    # 忽略简单的导航和查看命令
+    "^cd ",
+    "^ls",
+    "^cat ",
+    "^pwd",
+    
+    # 忽略包管理器命令
+    "^pacman",
+    "^yay -Q",
+    
+    # 忽略直接通过管道传给 fzf 的临时命令
+    ".*\\| *fzf",
+    
+    # 忽略sudo
+    "^sudo"
+]
+
+# ==========================================
+# 统计设置
+# ==========================================
+[stats]
+# 合并带有子命令的工具统计
+common_subcommands = [
+    "pacman", "yay", "cargo", "git", "docker", "systemctl", "bun", "npm", "just", "opencode"
+]
+# 统计时忽略的前缀
+common_prefix = ["sudo"]
+# 完全忽略统计的命令
+ignored_commands = [
+    "cd", "ls", "ll", "pwd", "clear", "exit", "vi", "vim", "nano", "code", "neofetch"
+]
+
+# ==========================================
+# Threads (AI 编程会话捕获)
+# ==========================================
+# 捕获 AI Agent 的会话历史并支持同步
+[threads]
+capture = true
+capture_tools = true
+
+[threads.resume]
+# 允许直接在 Atuin 中恢复 opencode 会话
+opencode = "opencode --session {id}"
+
+# ==========================================
+# tmux 联动
+# ==========================================
+[tmux]
+# 在 tmux 中启用弹出窗口
+enabled = true
+width = "80%"
+height = "60%"
+
+# ==========================================
+# 守护进程
+# ==========================================
+[daemon]
+# 启用后台守护进程进行同步，减少对终端的阻塞
+enabled = true
+autostart = true
+sync_frequency = 300
