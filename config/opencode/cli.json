@@ -1,0 +1,18 @@
+{
+  "theme": {
+    "name": "catppuccin",
+    "mode": "system"
+  },
+  "plugins": [
+    "./herdr-opencode"
+  ],
+  "diffs": {
+    "wrap": "word"
+  },
+  "session": {
+    "sidebar": "auto",
+    "scrollbar": false,
+    "thinking": "hide"
+  },
+  "animations": true
+}

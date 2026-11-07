@@ -1,0 +1,55 @@
+colors:
+  background:
+    hex: "#1e1e2e"
+    rgb: [30, 30, 46]
+  foreground:
+    hex: "#bac2de"
+    rgb: [186, 194, 222]
+  black:
+    hex: "#45475a"
+    rgb: [69, 71, 90]
+  red:
+    hex: "#eb82a0"
+    rgb: [235, 130, 160]
+  green:
+    hex: "#a0d79b"
+    rgb: [160, 215, 155]
+  yellow:
+    hex: "#ebd7aa"
+    rgb: [235, 215, 170]
+  blue:
+    hex: "#87afeb"
+    rgb: [135, 175, 235]
+  magenta:
+    hex: "#c3a0f0"
+    rgb: [195, 160, 240]
+  cyan:
+    hex: "#8cd7e1"
+    rgb: [140, 215, 225]
+  white:
+    hex: "#bac2de"
+    rgb: [186, 194, 222]
+  bright_black:
+    hex: "#585b70"
+    rgb: [88, 91, 112]
+  bright_red:
+    hex: "#f38ba8"
+    rgb: [243, 139, 168]
+  bright_green:
+    hex: "#a6e3a1"
+    rgb: [166, 227, 161]
+  bright_yellow:
+    hex: "#f9e2af"
+    rgb: [249, 226, 175]
+  bright_blue:
+    hex: "#89b4fa"
+    rgb: [137, 180, 250]
+  bright_magenta:
+    hex: "#cba6f7"
+    rgb: [203, 166, 247]
+  bright_cyan:
+    hex: "#94e2d5"
+    rgb: [148, 226, 213]
+  bright_white:
+    hex: "#cdd6f4"
+    rgb: [205, 214, 244]

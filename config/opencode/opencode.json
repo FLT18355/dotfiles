@@ -1,0 +1,10 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "plugin": [
+        "openkilo",
+        "opencode-sessions-sidebar",
+        "opencode-user-timeline",
+        "@dietrichgebert/ponytail"
+    ],
+    "snapshot": false
+}
