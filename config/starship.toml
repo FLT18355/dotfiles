@@ -30,8 +30,8 @@ palette = 'catppuccin_mocha'
 [os]
 disabled = false
 style = "bg:red fg:crust"
-# 单独将 Arch Logo 颜色设为蓝色，背景保持红色
-format = '[󰣇](fg:blue bg:red)'
+# 恢复默认，使用全局的深色前景
+format = '[$symbol]($style)'
 
 [os.symbols]
 Arch = "󰣇"
