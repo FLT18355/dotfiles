@@ -42,6 +42,7 @@ alias py="python3"
 alias v="nvim"
 alias grep="rg" # 直接用 rg 替代 grep，速度起飞且自带颜色
 alias find="fd" # 用 fd 替代 find
+alias j="just"
 
 # ---- 下载工具 ----
 alias wget="wget --show-progress"
