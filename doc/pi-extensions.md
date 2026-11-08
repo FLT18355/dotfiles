@@ -1,6 +1,6 @@
 # Pi 扩展清单
 
-> 由 `scripts/pi-list.sh` 自动生成于 2026-11-08 15:51:11
+> 由 `scripts/pi-list.sh` 自动生成于 2026-11-08 16:14:18
 
 ## 概览
 
@@ -17,8 +17,6 @@ User packages:
     /home/flt18355/.pi/agent/npm/node_modules/pi-catppuccin-tui
   git:github.com/TheSethrose/pi-zai-provider
     /home/flt18355/.pi/agent/git/github.com/TheSethrose/pi-zai-provider
-  npm:pi-bansos
-    /home/flt18355/.pi/agent/npm/node_modules/pi-bansos
   npm:@d3ara1n/pi-provider-agnes
     /home/flt18355/.pi/agent/npm/node_modules/@d3ara1n/pi-provider-agnes
   npm:pi-tidy
@@ -27,4 +25,6 @@ User packages:
     /home/flt18355/.pi/agent/npm/node_modules/pi-starline
   npm:pi-agent-extensions (filtered)
     /home/flt18355/.pi/agent/npm/node_modules/pi-agent-extensions
+  npm:pi-our-free-model
+    /home/flt18355/.pi/agent/npm/node_modules/pi-our-free-model
 ```
