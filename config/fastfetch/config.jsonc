@@ -29,7 +29,8 @@
         {
             "type": "os",
             "key": "  󰌽 系统喵",
-            "keyColor": "#b4befe"
+            "keyColor": "#b4befe",
+            "format": "Arch (Btw) x86_67"
         },
         {
             "type": "kernel",
@@ -90,9 +91,10 @@
             "keyColor": "#cba6f7"
         },
         {
-            "type": "memory",
+            "type": "command",
             "key": "  󰍛 记忆喵",
-            "keyColor": "#fab387"
+            "keyColor": "#fab387",
+            "text": "~/.config/fastfetch/rainbow_bar.sh"
         },
         {
             "type": "shell",
