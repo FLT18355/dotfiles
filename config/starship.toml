@@ -30,7 +30,6 @@ palette = 'catppuccin_mocha'
 [os]
 disabled = false
 style = "bg:red fg:crust"
-# 恢复默认，使用全局的深色前景
 format = '[$symbol]($style)'
 
 [os.symbols]
@@ -40,7 +39,8 @@ Arch = "󰣇"
 show_always = true
 style_user = "bg:red fg:crust"
 style_root = "bg:red fg:crust"
-format = '[ 󰀄 主人 $user]($style)'
+# 只保留用户名，去掉了图标和“主人”字样
+format = '[ $user ]($style)'
 
 [directory]
 style = "bg:peach fg:crust"
@@ -87,7 +87,6 @@ symbol = ""
 style = "bg:green"
 format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
 
-# 补全了 Conda 的样式
 [conda]
 symbol = "󰐊"
 style = "bg:sapphire"
@@ -104,11 +103,9 @@ disabled = false
 
 [character]
 disabled = false
-# 成功用 󰁔，失败用 󰅚 (带哭脸)
 success_symbol = '[󰁔](bold fg:green)'
 error_symbol = '[󰅚 喵呜>_<](bold fg:red)'
 
-# 耗时模块：加上了秒表图标 󱎫
 [cmd_duration]
 show_milliseconds = false
 format = "[ 󱎫 $duration ]($style)"
