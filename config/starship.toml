@@ -1,26 +1,27 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# 颜色顺序模仿图片：Blue -> Sapphire -> Mauve -> Lavender -> Yellow -> Red
 format = """
-[](red)\
+[](blue)\
 $os\
 $username\
-[](bg:peach fg:red)\
+[](bg:sapphire fg:blue)\
 $directory\
-[](bg:yellow fg:peach)\
+[](bg:mauve fg:sapphire)\
 $git_branch\
 $git_status\
-[](fg:yellow bg:green)\
+[](bg:lavender fg:mauve)\
 $c\
 $rust\
 $golang\
 $nodejs\
 $bun\
 $python\
-[](fg:green bg:sapphire)\
+[](bg:yellow fg:lavender)\
 $conda\
-[](fg:sapphire bg:lavender)\
+[](bg:red fg:yellow)\
 $time\
-[ ](fg:lavender)\
+[ ](fg:red)\
 $line_break\
 $cmd_duration\
 $character"""
@@ -29,7 +30,7 @@ palette = 'catppuccin_mocha'
 
 [os]
 disabled = false
-style = "bg:red fg:crust"
+style = "bg:blue fg:crust"
 format = '[$symbol]($style)'
 
 [os.symbols]
@@ -37,66 +38,65 @@ Arch = "󰣇"
 
 [username]
 show_always = true
-style_user = "bg:red fg:crust"
-style_root = "bg:red fg:crust"
-# 只保留用户名，去掉了图标和“主人”字样
+style_user = "bg:blue fg:crust"
+style_root = "bg:blue fg:crust"
 format = '[ $user ]($style)'
 
 [directory]
-style = "bg:peach fg:crust"
+style = "bg:sapphire fg:crust"
 format = "[ 󰉋 $path ]($style)"
 truncation_length = 3
 
 [git_branch]
 symbol = "󰊢"
-style = "bg:yellow"
-format = '[[ $symbol $branch ](fg:crust bg:yellow)]($style)'
+style = "bg:mauve"
+format = '[[ $symbol $branch ](fg:crust bg:mauve)]($style)'
 
 [git_status]
-style = "bg:yellow"
-format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
+style = "bg:mauve"
+format = '[[($all_status$ahead_behind )](fg:crust bg:mauve)]($style)'
 
 # ================= 语言段：带版本号 =================
 [nodejs]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
+style = "bg:lavender"
+format = '[[ $symbol $version ](fg:crust bg:lavender)]($style)'
 
 [bun]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
+style = "bg:lavender"
+format = '[[ $symbol $version ](fg:crust bg:lavender)]($style)'
 
 [c]
 symbol = " "
-style = "bg:green"
-format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
+style = "bg:lavender"
+format = '[[ $symbol $version ](fg:crust bg:lavender)]($style)'
 
 [rust]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
+style = "bg:lavender"
+format = '[[ $symbol $version ](fg:crust bg:lavender)]($style)'
 
 [golang]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
+style = "bg:lavender"
+format = '[[ $symbol $version ](fg:crust bg:lavender)]($style)'
 
 [python]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol $version ](fg:crust bg:green)]($style)'
+style = "bg:lavender"
+format = '[[ $symbol $version ](fg:crust bg:lavender)]($style)'
 
 [conda]
 symbol = "󰐊"
-style = "bg:sapphire"
-format = '[[ $symbol $environment ](fg:crust bg:sapphire)]($style)'
+style = "bg:yellow"
+format = '[[ $symbol $environment ](fg:crust bg:yellow)]($style)'
 
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:lavender"
-format = '[[ 󱑎 $time 喵 ](fg:crust bg:lavender)]($style)'
+style = "bg:red"
+format = '[[ 󱑎 $time 喵 ](fg:crust bg:red)]($style)'
 
 [line_break]
 disabled = false
