@@ -14,3 +14,6 @@
   - starship: 美化命令行提示符
   - herdr: AI时代的tmux
   - atuin: 历史管理器
+  
+- 玩具:
+  - metrocity(屏保) **cargo install metrocity**

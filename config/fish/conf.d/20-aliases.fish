@@ -69,3 +69,4 @@ alias timer='time read'
 alias e='exit'
 alias her='herdr'
 alias dsh="node --expose-internals /usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js"
+alias met="metrocity" # 屏保
