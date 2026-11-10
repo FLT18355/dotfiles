@@ -11,6 +11,22 @@ pi-list:
     @scripts/pi-list.sh
 
 # ==========================================
+#  缓存清理
+# ==========================================
+
+# 清理包管理器缓存（交互，可指定管理器）：just clean-cache [pip bun ...]
+clean-cache *args:
+    @scripts/cache/clean.sh {{args}}
+
+# 预览要执行的清理命令：just clean-cache-dry [pip bun ...]
+clean-cache-dry *args:
+    @scripts/cache/clean.sh -n {{args}}
+
+# 看看哪些管理器装了：just clean-cache-list
+clean-cache-list:
+    @scripts/cache/clean.sh -l
+
+# ==========================================
 #  Git 自动化
 # ==========================================
 
