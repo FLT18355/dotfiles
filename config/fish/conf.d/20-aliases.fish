@@ -164,3 +164,6 @@ end
 function met --wraps=metrocity --description '屏保'
     command metrocity $argv
 end
+function l --wraps=lazygit --description 'lazygit 终端 UI'
+    command lazygit $argv
+end
