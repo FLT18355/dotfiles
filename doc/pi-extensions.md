@@ -1,6 +1,6 @@
 # Pi 扩展清单
 
-> 由 `scripts/pi-list.sh` 自动生成于 2026-11-08 16:14:18
+> 由 `scripts/pi-list.sh` 自动生成于 2026-11-10 19:11:48
 
 ## 概览
 
@@ -25,6 +25,6 @@ User packages:
     /home/flt18355/.pi/agent/npm/node_modules/pi-starline
   npm:pi-agent-extensions (filtered)
     /home/flt18355/.pi/agent/npm/node_modules/pi-agent-extensions
-  npm:pi-our-free-model
-    /home/flt18355/.pi/agent/npm/node_modules/pi-our-free-model
+  npm:pi-bansos
+    /home/flt18355/.pi/agent/npm/node_modules/pi-bansos
 ```
