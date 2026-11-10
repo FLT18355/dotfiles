@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import sys
+import os
 import urllib.request
 import hashlib
 import tempfile
@@ -118,9 +119,18 @@ def main():
                             expected_hash = parts[0]
                             break
                 except Exception as e:
-                    console.print(f"[yellow]󰀦 无法拉取 checksums.txt，跳过校验: {e}[/yellow]")
+                    console.print(f"[red]󰅚 无法拉取 checksums.txt: {e}[/red]")
 
-            if expected_hash:
+            # 拿不到校验值就中止（以前是警告后继续安装，等于校验可被绕过）
+            if not expected_hash:
+                if os.environ.get("ALLOW_UNVERIFIED") == "1":
+                    console.print("[yellow]󰀦 未取得 SHA256，按 ALLOW_UNVERIFIED=1 继续安装[/yellow]")
+                else:
+                    raise Exception(
+                        "没有可用的 SHA256 校验值，已中止安装"
+                        "（确认无风险可设 ALLOW_UNVERIFIED=1）"
+                    )
+            else:
                 actual = sha256_file(tmp_tar_path)
                 if actual != expected_hash:
                     raise Exception(f"SHA256 不匹配！\n期望: {expected_hash}\n实际: {actual}")
@@ -129,7 +139,10 @@ def main():
             with tempfile.TemporaryDirectory() as extract_dir:
                 extract_path = Path(extract_dir)
                 with tarfile.open(tmp_tar_path, "r:gz") as tf:
-                    tf.extractall(extract_path)
+                    if sys.version_info >= (3, 12):
+                        tf.extractall(extract_path, filter="data")
+                    else:
+                        tf.extractall(extract_path)
 
                 bin_candidate = extract_path / "tuios"
                 if not bin_candidate.exists():

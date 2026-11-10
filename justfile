@@ -47,15 +47,19 @@ ship msg:
 # 安全的打标签：just tag v1.0.0 "发布说明"
 tag version message:
     #!/usr/bin/env bash
-    set -e
+    set -euo pipefail
     if [ -n "$(git status --porcelain)" ]; then
         echo "󰀦  工作区有未提交的改动，先提交再打标签！"
         exit 1
     fi
+    if git rev-parse -q --verify "refs/tags/{{version}}" >/dev/null; then
+        echo "󰀦  标签 {{version}} 已存在，先删掉再来喵"
+        exit 1
+    fi
     echo "󰓻  正在创建标签 {{version}}..."
-    git tag -a {{version}} -m "{{message}}"
+    git tag -a "{{version}}" -m "{{message}}"
     echo "󰁔  推送标签到远端..."
-    git push origin {{version}}"
+    git push origin "{{version}}"
     echo "󰄬  标签 {{version}} 已创建并推送！"
     
 # ==========================================

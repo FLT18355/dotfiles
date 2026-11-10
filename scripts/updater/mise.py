@@ -2,6 +2,7 @@
 import sys
 import urllib.request
 import json
+import hashlib
 import tarfile
 import tempfile
 import shutil
@@ -38,16 +39,23 @@ def main():
 
     tag_name = data.get("tag_name", "Unknown")
     download_url = None
+    asset_digest = None
 
     # 2. 解析下载链接：精准匹配不含 musl 的 linux-arm64.tar.xz
     for asset in data.get("assets", []):
         name = asset.get("name", "")
         if name.endswith(TARGET_SUFFIX) and "musl" not in name:
             download_url = asset.get("browser_download_url")
+            asset_digest = asset.get("digest")  # 形如 sha256:...
             break
 
     if not download_url:
         console.print(f"[red]󰅚 未找到适用于 {TARGET_SUFFIX} 的下载包。[/red]")
+        sys.exit(1)
+
+    # 没有 digest 就不装：中转站/链路被篡改时拿不到可信值
+    if not asset_digest:
+        console.print("[red]󰅚 该 Release 未提供 digest，无法校验，已中止。[/red]")
         sys.exit(1)
 
     accel_url = f"{PROXY}{download_url}"
@@ -83,7 +91,18 @@ def main():
                         tmp_file.write(chunk)
                         progress.update(task, advance=len(chunk))
 
-        # 5. 解压 (注意后缀变成了 .tar.xz，模式用 r:xz)
+        # 5. 校验 sha256（中转站也可能改包，至少挡住链路篡改）
+        console.print("[yellow]󰒃 正在校验 sha256...[/yellow]")
+        h = hashlib.sha256()
+        with open(tmp_path, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+        actual = "sha256:" + h.hexdigest()
+        if actual != asset_digest:
+            raise Exception(f"sha256 校验失败: 期望 {asset_digest}, 实际 {actual}")
+        console.print("[green]󰄬 sha256 校验通过[/green]")
+
+        # 6. 解压 (注意后缀变成了 .tar.xz，模式用 r:xz)
         console.print("[yellow]󰃢 正在解压并提取文件...[/yellow]")
         tmp_target = TARGET_FILE.with_name(TARGET_FILE.name + ".tmp")
         with tarfile.open(tmp_path, "r:xz") as tar:
@@ -101,7 +120,7 @@ def main():
                 with open(tmp_target, "wb") as target:
                     shutil.copyfileobj(source, target)
 
-        # 6. 赋予执行权限并原子替换
+        # 7. 赋予执行权限并原子替换
         tmp_target.chmod(0o755)
         tmp_target.replace(TARGET_FILE)
         console.print(f"[bold green]󰄬 更新成功! 已安装到: {TARGET_FILE}[/bold green]")

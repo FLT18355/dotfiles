@@ -1,4 +1,5 @@
-set -Ux FZF_DEFAULT_OPTS "\
+# fzf 默认选项（-g 而不是 -U：不往 fish_variables 里写本地状态）
+set -gx FZF_DEFAULT_OPTS "\
 --color=bg+:#313244,bg:#1E1E2E,spinner:#F5C2E7,hl:#F38BA8 \
 --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5C2E7 \
 --color=marker:#A6E3A1,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \

@@ -7,13 +7,21 @@ set -g fish_greeting ""
 
 # 仅在交互式 Shell 中加载以下配置，避免影响非交互式脚本执行速度
 if status is-interactive
-    
+
     # 1. 设置终端主题
-    fish_config theme choose catppuccin-mocha
+    # fish_config theme choose 单次约 0.5s，只在首次启动跑一次，
+    # 之后靠 universal 变量 __dotfiles_theme 跳过。
+    # 换主题后重跑：set -e -U __dotfiles_theme; exec fish
+    if not set -q __dotfiles_theme
+        fish_config theme choose catppuccin-mocha
+        set -U __dotfiles_theme catppuccin-mocha
+    end
 
     # 2. 提示符配置 (Starship)
-    # 启用瞬态提示符模式，精简历史命令展示
-    enable_transience
+    # 瞬态提示符：enable_transience 不是所有 fish 版本都有，没有就跳过
+    if type -q enable_transience
+        enable_transience
+    end
     starship init fish | source
 
     # 3. 模糊搜索与目录跳转
