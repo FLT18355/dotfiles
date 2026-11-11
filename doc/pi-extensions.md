@@ -1,12 +1,12 @@
 # Pi 扩展清单
 
-> 由 `scripts/pi-list.sh` 自动生成于 2026-11-10 19:11:48
+> 由 `scripts/pi-list.sh` 自动生成于 2026-11-11 20:20:24
 
 ## 概览
 
 | 来源 | 数量 |
 |------|------|
-| npm | 6 |
+| npm | 7 |
 | git | 1 |
 
 ## 扩展列表
@@ -27,4 +27,6 @@ User packages:
     /home/flt18355/.pi/agent/npm/node_modules/pi-agent-extensions
   npm:pi-bansos
     /home/flt18355/.pi/agent/npm/node_modules/pi-bansos
+  npm:pi-plugin-manager
+    /home/flt18355/.pi/agent/npm/node_modules/pi-plugin-manager
 ```
