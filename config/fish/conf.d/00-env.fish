@@ -51,6 +51,15 @@ set -gx PULSE_SERVER 127.0.0.1
 # pip 镜像
 set -gx UV_DEFAULT_INDEX https://pypi.tuna.tsinghua.edu.cn/simple
 
+# HomeBrew
+# Homebrew 核心仓库 (Git)
+set -gx HOMEBREW_BREW_GIT_REMOTE "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+set -gx HOMEBREW_CORE_GIT_REMOTE "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+
+# Bottles 预编译包及 API 索引 (HTTP)
+set -gx HOMEBREW_API_DOMAIN "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
+set -gx HOMEBREW_BOTTLE_DOMAIN "https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+
 # Github Copilot Cli
 set -gx COPILOT_PROVIDER_BASE_URL https://apihub.agnes-ai.cn/v1
 set -gx COPILOT_MODEL agnes-2.5-flash
