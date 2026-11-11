@@ -2,6 +2,9 @@
 # 插件初始化与主题配置
 # ============================================
 
+# 第一步就是启用brew
+eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
 # 禁用默认欢迎语
 set -g fish_greeting ""
 
