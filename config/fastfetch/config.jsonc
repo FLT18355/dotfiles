@@ -1,6 +1,7 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
+        // "source": "~/.config/fastfetch/images/awa.jpg",
         "source": "~/.config/fastfetch/images/*.png",
         "type": "kitty",
         "height": 28,
@@ -30,17 +31,19 @@
             "type": "os",
             "key": "  󰌽 系统喵",
             "keyColor": "#b4befe",
-            "format": "Arch (Btw) x86_67"
+            "format": "\u001b[38;2;243;139;168mArch \u001b[38;2;250;179;135m(Btw) \u001b[38;2;249;226;175mx\u001b[38;2;166;227;161m8\u001b[38;2;148;226;213m6\u001b[38;2;137;180;250m_\u001b[38;2;203;166;247m67\u001b[0m"
         },
         {
             "type": "kernel",
-            "key": "  󰒓 内核喵",
-            "keyColor": "#b4befe"
+            "key": "  󰒓 核心喵",
+            "keyColor": "#b4befe",
+            "format": "\u001b[38;2;250;179;135m{1} {2}\u001b[0m"
         },
         {
-            "type": "packages",
+            "type": "command",
             "key": "  󰏗 软糖包",
-            "keyColor": "#a6e3a1"
+            "keyColor": "#a6e3a1",
+            "text": "~/.config/fastfetch/pkg_count.sh"
         },
         {
             "type": "wm",
@@ -54,9 +57,9 @@
         },
         {
             "type": "terminal",
-            "key": "  󰆍 终端喵",
-            "format": "{1}",
-            "keyColor": "#94e2d5"
+            "key": "  󰆍 猫窝喵",
+            "keyColor": "#94e2d5",
+            "format": "\u001b[38;2;203;166;247mFLT18355\u001b[38;2;166;227;161m的\u001b[38;2;249;226;175m猫窝 \u001b[38;2;137;220;235m({1})\u001b[0m"
         },
         {
             "type": "terminalfont",
@@ -80,15 +83,15 @@
         },
         {
             "type": "cpu",
-            "format": "{1}",
             "key": "  󰻠 大脑喵",
-            "keyColor": "#cba6f7"
+            "keyColor": "#cba6f7",
+            "format": "\u001b[38;2;235;160;172m{1}\u001b[0m"
         },
         {
             "type": "gpu",
-            "format": "{1} {2}",
             "key": "  󰢮 画图喵",
-            "keyColor": "#cba6f7"
+            "keyColor": "#cba6f7",
+            "format": "\u001b[38;2;148;226;213m{1} {2}\u001b[0m"
         },
         {
             "type": "command",
@@ -97,24 +100,22 @@
             "text": "~/.config/fastfetch/rainbow_bar.sh"
         },
         {
-            "type": "shell",
-            "format": "{1} {4}",
+            "type": "command",
             "key": "  󰞀 壳壳喵",
-            "keyColor": "#fab387"
+            "keyColor": "#fab387",
+            "text": "~/.config/fastfetch/shell_info.sh"
         },
         {
             "type": "command",
             "key": "  󰌠 蟒蛇喵",
             "keyColor": "#a6e3a1",
-            "text": "python --version 2>/dev/null || echo '未安装喵'",
-            "output": "{1}"
+            "text": "~/.config/fastfetch/python_info.sh"
         },
         {
             "type": "command",
             "key": "  󰎙 节点喵",
             "keyColor": "#a6e3a1",
-            "text": "node --version 2>/dev/null || echo '未安装喵'",
-            "output": "{1}"
+            "text": "~/.config/fastfetch/node_info.sh"
         },
         {
             "type": "host",
@@ -155,9 +156,10 @@
             "text": "if [ -f /etc/install-date ]; then install_date=$(date -d $(cat /etc/install-date) +%s); current=$(date +%s); echo $(( (current - install_date) / 86400 )) days; else echo '未知喵~'; fi"
         },
         {
-            "type": "locale",
+            "type": "custom",
             "key": "  󰗊 语言喵",
-            "keyColor": "#b4befe"
+            "keyColor": "#b4befe",
+            "format": "\u001b[38;2;245;194;231m喵星语"
         },
         {
             "type": "custom",
