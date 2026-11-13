@@ -10,6 +10,10 @@ default:
 pi-list:
     @scripts/pi-list.sh
 
+# 生成已安装包清单到 doc/（pacman/brew 各一个 txt）：just get-packages [pacman|brew]
+get-packages *args:
+    @scripts/get-packages.sh {{args}}
+
 # ==========================================
 #  缓存清理
 # ==========================================
