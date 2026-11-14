@@ -1,7 +1,6 @@
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {
-        // "source": "~/.config/fastfetch/images/awa.jpg",
         "source": "~/.config/fastfetch/images/*.png",
         "type": "kitty",
         "height": 28,
@@ -48,12 +47,16 @@
         {
             "type": "wm",
             "key": "  󰖲 窗口喵",
-            "keyColor": "#f9e2af"
+            "keyColor": "#f9e2af",
+            // 👇 修复：使用 {pretty-name} 避免重复输出
+            "format": "\u001b[38;2;245;194;231m{pretty-name}\u001b[0m"
         },
         {
             "type": "de",
             "key": "  󰟀 桌面喵",
-            "keyColor": "#f9e2af"
+            "keyColor": "#f9e2af",
+            // 👇 修复：使用 {pretty-name} 或 {2} 来显示干净的桌面名
+            "format": "\u001b[38;2;203;166;247m{pretty-name}\u001b[0m"
         },
         {
             "type": "terminal",
@@ -64,7 +67,8 @@
         {
             "type": "terminalfont",
             "key": "  󰛖 字体喵",
-            "keyColor": "#94e2d5"
+            "keyColor": "#94e2d5",
+            "format": "\u001b[38;2;180;190;254m{1}\u001b[0m"
         },
         {
             "type": "custom",
@@ -120,13 +124,15 @@
         {
             "type": "host",
             "key": "  󰟀 机器喵",
-            "format": "{name}{?vendor} ({vendor}){?}",
-            "keyColor": "#f38ba8"
+            "keyColor": "#f38ba8",
+            "format": "\u001b[38;2;250;179;135m{name}\u001b[0m"
         },
         {
             "type": "uptime",
             "key": "  󰔛 醒着喵",
-            "keyColor": "#f38ba8"
+            "keyColor": "#f38ba8",
+            // 👇 修复：使用正确的命名占位符组合
+            "format": "\u001b[38;2;249;226;175m{days}d {hours}h {minutes}m\u001b[0m"
         },
         {
             "type": "custom",
@@ -147,7 +153,7 @@
             "type": "datetime",
             "key": "  󱑎 现在喵",
             "keyColor": "#94e2d5",
-            "format": "{1}-{2}-{3} {4}:{5}"
+            "format": "\u001b[38;2;137;220;235m{1}-{2}-{3} {4}:{5}\u001b[0m"
         },
         {
             "type": "command",
@@ -159,7 +165,7 @@
             "type": "custom",
             "key": "  󰗊 语言喵",
             "keyColor": "#b4befe",
-            "format": "\u001b[38;2;245;194;231m喵星语"
+            "format": "\u001b[38;2;245;194;231m喵星语\u001b[0m"
         },
         {
             "type": "custom",
