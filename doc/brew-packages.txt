@@ -1,1 +1,1 @@
-fastfetch fzf gh herdr just ncurses pipes-sh yyjson zoxide
+fastfetch fzf gdu gh herdr just ncurses pipes-sh yyjson zoxide
