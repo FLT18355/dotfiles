@@ -2,37 +2,53 @@ onboarding = false
 # herdr 配置喵~ 放在 ~/.config/herdr/config.toml 就对啦
 
 # ==========================================
-# 主题与外观喵
+# 主题与外观喵（Catppuccin Mocha 自定义精细调色）
 # ==========================================
 [theme]
-# 内置主题喵：catppuccin, terminal, tokyo-night, dracula, nord...
+# 基础主题使用 catppuccin 喵
 name = "catppuccin"
 auto_switch = false
 # 如果想微调颜色，可以用 [theme.custom] 覆盖喵
-# 比如：accent = "#f5c2e7"
+
+[theme.custom]
+# 让背景真正透出壁纸
+panel_bg = "reset"
+sidebar_bg = "reset"
+
+# 主色调（强调色）：Catppuccin Mauve 紫
+accent = "#cba6f7"
+
+# 文本与前景色
+text = "#cdd6f4"
+subtext0 = "#a6adc8"
+
+# 功能状态色
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+mauve = "#cba6f7"
+blue = "#89dceb"
+peach = "#fab387"
+
+# 选中行与背景色块（用带一点紫调的深灰色，避免破坏透明感，又保证文字清晰）
+active_row_bg = "#313244"
+selection_bg = "#45475a"
+
+# 边框和分隔线
+surface_dim = "#585b70"
 
 # ==========================================
 # 终端与目录策略喵
 # ==========================================
 [terminal]
 default_shell = "fish"
-# "follow" 会跟着当前窗格走，不会每次都跑回主目录喵
 new_cwd = "follow"
 
 # ==========================================
 # 快捷键喵
 # ==========================================
 [keys]
-# 用 ctrl+space 当前缀键，顺手又不容易撞车喵
 prefix = "ctrl+space"
-
-# 下面是默认动作，想用就取消注释喵
-# new_tab = "prefix+c"
-# close_tab = "prefix+shift+x"
-# split_vertical = "prefix+v"
-# split_horizontal = "prefix+minus"
-# close_pane = "prefix+x"
-# toggle_sidebar = "prefix+b"
 
 # 自定义命令喵：按 prefix+y 弹出一个 yazi 小窗
 [[keys.command]]
@@ -49,7 +65,7 @@ type = "plugin_action"
 command = "persiyanov.reviewr.toggle"
 description = "切换 reviewr 喵"
 
-# herdr-sidebar 插件喵（统一到 prefix 下，不用按一堆 ctrl+alt 啦）
+# herdr-sidebar 插件喵
 [[keys.command]]
 key = "prefix+s"
 type = "plugin_action"
@@ -64,8 +80,6 @@ sidebar_width = 26
 sidebar_collapsed_mode = "compact"
 pane_borders = true
 pane_gaps = true
-# 给 Catppuccin 加一点品牌蓝做高亮喵
-accent = "#89b4fa"
 status_indicators = "dots"
 show_agent_labels_on_pane_borders = true
 
@@ -96,12 +110,10 @@ version_check = true
 manage_ssh_config = true
 
 [experimental]
-# 坚决不允许嵌套喵，不然快捷键会打架的
 allow_nested = false
 pane_history = false
 switch_ascii_input_source_in_prefix = false
 reveal_hidden_cursor_for_cjk_ime = false
 
 [advanced]
-# 滚动缓冲大概 20MB，够用喵
 scrollback_limit_bytes = 20000000
