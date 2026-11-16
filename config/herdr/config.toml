@@ -58,6 +58,14 @@ command = "yazi"
 width = "90%"
 height = "85%"
 
+# 按 prefix + g 弹出 lazygit
+[[keys.command]]
+key = "prefix+g"
+type = "popup"
+command = "lazygit"
+width = "90%"
+height = "85%"
+
 # reviewr 插件喵
 [[keys.command]]
 key = "prefix+r"
