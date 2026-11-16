@@ -95,7 +95,8 @@ format = '[ $symbol $environment ]($style)'
 disabled = false
 time_format = "%R"
 style = "bg:surface1 fg:text"
-format = '[ 󱑎 $time 喵 ]($style)'
+# 去除了时间后面的“喵”
+format = '[ 󱑎 $time ]($style)'
 
 [line_break]
 disabled = false
@@ -103,7 +104,8 @@ disabled = false
 [character]
 disabled = false
 success_symbol = '[󰁔](bold fg:green)'
-error_symbol = '[󰅚 喵呜>_<](bold fg:red)'
+# 去除了错误提示里的“喵呜”
+error_symbol = '[󰅚 >_<](bold fg:red)'
 
 [cmd_duration]
 show_milliseconds = false
