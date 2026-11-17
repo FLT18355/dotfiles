@@ -1,0 +1,31 @@
+{
+  "id": "tuios-mocha-purple",
+  "display_name": "Catppuccin Mocha (Purple)",
+  "fg": "#cdd6f4",
+  "bg": "#1e1e2e",
+  "cursor": "#cba6f7",
+  "black": "#45475a",
+  "red": "#f38ba8",
+  "green": "#a6e3a1",
+  "yellow": "#f9e2af",
+  "blue": "#89b4fa",
+  "purple": "#cba6f7",
+  "cyan": "#94e2d5",
+  "white": "#bac2de",
+  "bright_black": "#585b70",
+  "bright_red": "#f38ba8",
+  "bright_green": "#a6e3a1",
+  "bright_yellow": "#f9e2af",
+  "bright_blue": "#89b4fa",
+  "bright_purple": "#d1b8ff",
+  "bright_cyan": "#94e2d5",
+  "bright_white": "#a6adc8",
+  "chrome": {
+    "accent": "#cba6f7",
+    "accent_bright": "#d1b8ff",
+    "success": "#a6e3a1",
+    "warning": "#f9e2af",
+    "error": "#f38ba8",
+    "info": "#89b4fa"
+  }
+}

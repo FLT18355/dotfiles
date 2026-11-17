@@ -114,7 +114,7 @@
 # ============================================================================
 
 [appearance]
-border_style = 'glyphs'
+border_style = "glyphs"
 zen_mode = 'disabled'
 links = 'all'
 hide_window_buttons = false
@@ -126,17 +126,17 @@ scroll_lines = 3
 kitty_placeholders = 'auto'
 auto_enter_terminal_on_focus = 'off'
 click_to_type = 'double'
-dockbar_position = 'top'
+dockbar_position = "bottom"
 preferred_shell = ''
 motion = 'full'
 modal_dim = 30
 whichkey_position = ''
 window_title_position = 'top'
 hide_clock = false
-show_clock = false
+show_clock = true
 show_cpu = false
-show_ram = false
-theme = 'catppuccin_mocha'
+show_ram = true
+theme = "tuios-mocha-purple"
 border_focused_color = ''
 border_unfocused_color = ''
 window_title_format = ''
@@ -146,7 +146,7 @@ niri_scroll_cells = 8
 prefix_repeat_time = 500
 max_fps = 0
 dock_workspace_tab_format = ''
-glyphs = 'default'
+glyphs = "default"
 gap = 0
 tiling_scheme = 'spiral'
 master_ratio = 50
@@ -162,6 +162,8 @@ pane_background = ''
 desktop_background = ''
 window_chrome_background = ''
 dock_background = ''
+dock_compact = true
+dock_mode_pill = "tiling"
 
 [appearance.scrollbar]
 style = 'track'
@@ -177,7 +179,7 @@ search_fg = '#F5E7C8'
 match_bg = '#E5A93D'
 match_fg = '#1C1B19'
 cursor_bg = '#39C5CF'
-cursor_fg = '#08222B'
+cursor_fg = ""
 flash = true
 flash_ms = 420
 flash_style = 'diagonal'
@@ -196,6 +198,7 @@ editor = ''
 file_delete = 'trash'
 background = ''
 agent_rest_fold = '1h'
+show_numbers = false
 
 [notifications]
 duration = 0
