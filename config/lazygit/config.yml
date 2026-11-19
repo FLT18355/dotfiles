@@ -1,32 +1,33 @@
 gui:
-  theme: # Catppuccin Mocha 官方色板
+  theme: # Catppuccin Mocha · 紫色主调
     activeBorderColor:
-      - '#f9e2af' # Yellow (激活边框)
+      - '#cba6f7' # Mauve (激活边框 · 主紫)
       - bold
     inactiveBorderColor:
       - '#a6adc8' # Subtext0 (非激活边框)
     optionsTextColor:
-      - '#89b4fa' # Blue (选项文字)
+      - '#b4befe' # Lavender (选项文字 · 淡紫)
     selectedLineBgColor:
       - '#313244' # Surface0 (选中行背景)
+    selectedRangeBgColor:
+      - '#45475a' # Surface1 (多选范围背景)
     cherryPickedCommitBgColor:
       - '#45475a' # Surface1
     cherryPickedCommitFgColor:
-      - '#89dceb' # Sky
+      - '#f5c2e7' # Pink (cherry-pick 提交)
     unstagedChangesColor:
-      - '#f38ba8' # Red (未暂存更改，非常醒目)
+      - '#f38ba8' # Red (未暂存更改，保留红色以免被紫色淹没)
     defaultFgColor:
       - '#cdd6f4' # Text (默认前景色)
     searchingActiveBorderColor:
-      - '#f9e2af' # Yellow (搜索时的边框)
+      - '#cba6f7' # Mauve (搜索时的边框 · 与激活边框统一)
     authorColors:
-      '*': '#b4befe' # Lavender
+      '*': '#b4befe' # Lavender (作者名)
 
   showBottomLine: false
-  border: rounded 
+  border: rounded
   nerdFontsVersion: "3" # 开启 Nerd Font v3 图标
 
-  # 修复：spinner 是 gui 下的子选项，不是 theme 下的
   spinner:
     frames:
       - '⣾'
@@ -38,11 +39,10 @@ gui:
       - '⣯'
       - '⣷'
 
-  # 其他提升颜值的细节设置
   showRandomTip: false
   showCommandLog: false
-  showFileTree: true       # 左侧显示文件树，更直观
-  showListFooter: false    # 隐藏底部的列表统计，让界面更干净
+  showFileTree: true       # 左侧显示文件树
+  showListFooter: false    # 隐藏底部列表统计
 
 os:
   editPreset: "nvim-remote"
@@ -50,7 +50,7 @@ os:
 promptToReturnFromSubprocess: false
 
 keybinding:
-  universal: 
+  universal:
     quit: q
     quit-alt1: <c-c>
   commits:
