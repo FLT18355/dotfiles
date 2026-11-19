@@ -1,143 +1,174 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+palette = "catppuccin_mocha"
 
-format = """
-[](blue)\
+# Format Layout (Pawlette Standard Order: Who -> Where -> Git Context -> Proxy)
+format = """\
+[╭╴](fg:mauve)\
 $os\
 $username\
-[](bg:pink fg:blue)\
-$directory\
-[](bg:mauve fg:pink)\
+(\
+    at \
+    $directory\
+)\
 $git_branch\
-$git_status\
-[](bg:lavender fg:mauve)\
-$c\
-$rust\
-$golang\
-$nodejs\
-$bun\
-$python\
-[](bg:yellow fg:lavender)\
-$conda\
-[](bg:surface1 fg:yellow)\
-$time\
-[ ](fg:surface1)\
-$line_break\
-$cmd_duration\
-$character"""
+$cmd_duration${custom.proxy}\
+(\
+    $python\
+    $conda\
+    $nodejs\
+    $c\
+    $rust\
+    $java\
+)
+[╰─](fg:mauve)$character\
+"""
 
-palette = 'catppuccin_mocha'
-
-[os]
-disabled = false
-style = "bg:blue fg:crust"
-format = '[$symbol]($style)'
-
-[os.symbols]
-Arch = "󰣇"
-
-[username]
-show_always = true
-style_user = "bg:blue fg:crust"
-style_root = "bg:blue fg:crust"
-format = '[ $user ]($style)'
-
-[directory]
-style = "bg:pink fg:crust"
-format = "[ 󰉋 $path ]($style)"
-truncation_length = 3
-
-[git_branch]
-symbol = "󰊢"
-style = "bg:mauve fg:crust"
-format = '[ $symbol $branch ]($style)'
-
-[git_status]
-style = "bg:mauve fg:crust"
-format = '[($all_status$ahead_behind )]($style)'
-
-# ================= 语言段 =================
-[nodejs]
-symbol = ""
-style = "bg:lavender fg:crust"
-format = '[ $symbol $version ]($style)'
-
-[bun]
-symbol = ""
-style = "bg:lavender fg:crust"
-format = '[ $symbol $version ]($style)'
-
-[c]
-symbol = " "
-style = "bg:lavender fg:crust"
-format = '[ $symbol $version ]($style)'
-
-[rust]
-symbol = ""
-style = "bg:lavender fg:crust"
-format = '[ $symbol $version ]($style)'
-
-[golang]
-symbol = ""
-style = "bg:lavender fg:crust"
-format = '[ $symbol $version ]($style)'
-
-[python]
-symbol = ""
-style = "bg:lavender fg:crust"
-format = '[ $symbol $version ]($style)'
-
-[conda]
-symbol = "󰐊"
-style = "bg:yellow fg:crust"
-format = '[ $symbol $environment ]($style)'
-
-[time]
-disabled = false
-time_format = "%R"
-style = "bg:surface1 fg:text"
-# 去除了时间后面的“喵”
-format = '[ 󱑎 $time ]($style)'
-
-[line_break]
-disabled = false
+# Enable blank line between commands
+add_newline = true
 
 [character]
+success_symbol = "[  ](bold fg:mauve)"
+error_symbol = "[  ](bold fg:red)"
+
+[os]
+format = "[$symbol]($style)"
+style = "bold mauve"
 disabled = false
-success_symbol = '[󰁔](bold fg:green)'
-# 去除了错误提示里的“喵呜”
-error_symbol = '[󰅚 >_<](bold fg:red)'
+
+[os.symbols]
+Alpine = " "
+Arch = " "
+CachyOS = " "
+Debian = " "
+EndeavourOS = " "
+Fedora = " "
+Linux = " "
+Macos = " "
+Manjaro = " "
+Mint = " "
+NixOS = " "
+openSUSE = " "
+Pop = " "
+SUSE = " "
+Ubuntu = " "
+Windows = " "
+
+[username]
+style_user = "bold mauve"
+style_root = "bold red"
+format = "[$user]($style) "
+disabled = false
+show_always = true
+
+[directory]
+format = "[$path](bold fg:mauve)[$read_only]($read_only_style) "
+truncation_length = 2
+style = "fg:mauve"
+read_only_style = "fg:mauve"
+before_repo_root_style = "fg:mauve"
+truncation_symbol = "…/"
+truncate_to_repo = true
+read_only = "  "
+
+[time]
+disabled = true
 
 [cmd_duration]
-show_milliseconds = false
-format = "[ 󱎫 $duration ]($style)"
-style = "fg:green"
 disabled = false
-min_time_to_notify = 45000
+format = "took [ $duration]($style) "
+style = "bold fg:red"
+min_time = 500
 
+[git_branch]
+format = "via [$symbol$branch]($style) "
+style = "bold fg:sky"
+symbol = " "
+
+[git_status]
+disabled = true
+
+[docker_context]
+disabled = false
+symbol = " "
+
+[package]
+disabled = false
+
+[nodejs]
+format = "[$symbol$version]($style) "
+style = "bold fg:green"
+symbol = " "
+version_format = "${raw}"
+disabled = false
+
+[python]
+disabled = false
+format = '[${symbol}${pyenv_prefix}(${version})( \($virtualenv\))]($style) '
+symbol = " "
+version_format = "${raw}"
+style = "bold fg:yellow"
+
+[conda]
+format = "[$symbol$environment]($style) "
+style = "bold fg:green"
+ignore_base = false
+disabled = false
+symbol = " "
+
+[java]
+format = "[$symbol$version]($style) "
+style = "bold fg:red"
+version_format = "${raw}"
+symbol = " "
+disabled = false
+
+[c]
+format = "[$symbol($version(-$name))]($style) "
+style = "bold fg:sky"
+symbol = " "
+version_format = "${raw}"
+disabled = false
+
+[rust]
+format = "[$symbol$version]($style) "
+style = "bold fg:mauve"
+symbol = " "
+version_format = "${raw}"
+disabled = false
+
+[custom.proxy]
+command = "echo $http_proxy $all_proxy $HTTP_PROXY $ALL_PROXY | tr ' ' '\\n' | grep -v '^$' | head -n1 | sed -E 's|.*:||'"
+when = "test -n \"$http_proxy\" -o -n \"$all_proxy\" -o -n \"$HTTP_PROXY\" -o -n \"$ALL_PROXY\""
+style = "bold fg:peach"
+format = "[󰲝 $output]($style) "
+
+# >>> Catppuccin Mocha (紫色主调) >>>
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
-flamingo = "#f2cdcd"
-pink = "#f5c2e7"
-mauve = "#cba6f7"
-red = "#f38ba8"
-maroon = "#eba0ac"
-peach = "#fab387"
-yellow = "#f9e2af"
-green = "#a6e3a1"
-teal = "#94e2d5"
-sky = "#89dceb"
-sapphire = "#74c7ec"
-blue = "#89b4fa"
-lavender = "#b4befe"
-text = "#cdd6f4"
-subtext1 = "#bac2de"
-subtext0 = "#a6adc8"
-overlay2 = "#9399b2"
-overlay1 = "#7f849c"
-overlay0 = "#6c7086"
-surface2 = "#585b70"
-surface1 = "#45475a"
-surface0 = "#313244"
-base = "#1e1e2e"
-mantle = "#181825"
-crust = "#11111b"
+flamingo  = "#f2cdcd"
+pink      = "#f5c2e7"
+mauve     = "#cba6f7" # 主紫色
+red       = "#f38ba8"
+maroon    = "#eba0ac"
+peach     = "#fab387"
+yellow    = "#f9e2af"
+green     = "#a6e3a1"
+teal      = "#94e2d5"
+sky       = "#89dceb"
+sapphire  = "#74c7ec"
+blue      = "#89b4fa"
+lavender  = "#b4befe"
+
+text      = "#cdd6f4"
+subtext1  = "#bac2de"
+subtext0  = "#a6adc8"
+
+overlay2  = "#9399b2"
+overlay1  = "#7f849c"
+overlay0  = "#6c7086"
+surface2  = "#585b70"
+surface1  = "#45475a"
+surface0  = "#313244"
+base      = "#1e1e2e"
+mantle    = "#181825"
+crust     = "#11111b"
+# <<< Catppuccin Mocha <<<
