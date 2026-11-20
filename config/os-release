@@ -1,5 +1,5 @@
 NAME="NekOS"
-PRETTY_NAME="NekOS"
+PRETTY_NAME="NekOS V0.3.0"
 ID=archarm
 ID_LIKE=arch
 BUILD_ID=rolling
