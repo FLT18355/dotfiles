@@ -2,16 +2,16 @@
 # get-packages.sh — 导出当前环境的包清单
 #
 # 用法:
-#   ./scripts/get-packages.sh pacman   # pacman 已安装包 → ./Pacmanfile
-#   ./scripts/get-packages.sh brew     # Homebrew 环境     → ./Brewfile（剔除 npm）
-#   ./scripts/get-packages.sh bun      # bun 全局包         → ./Bunfile（原样输出）
+#   ./scripts/get-packages.sh pacman   # pacman 已安装包 → ./scripts/Pacmanfile
+#   ./scripts/get-packages.sh brew     # Homebrew 环境   → ./scripts/Brewfile（剔除 npm）
+#   ./scripts/get-packages.sh bun      # bun 全局包       → ./scripts/Bunfile（原样输出）
 #   ./scripts/get-packages.sh          # 三者都导出
 set -euo pipefail
 
-REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PACMANFILE="$REPO/Pacmanfile"
-BREWFILE="$REPO/Brewfile"
-BUNFILE="$REPO/Bunfile"
+SCRIPTS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACMANFILE="$SCRIPTS_DIR/Pacmanfile"
+BREWFILE="$SCRIPTS_DIR/Brewfile"
+BUNFILE="$SCRIPTS_DIR/Bunfile"
 
 pacman_dump() {
   local out
