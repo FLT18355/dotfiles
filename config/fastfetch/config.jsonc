@@ -1,7 +1,10 @@
+
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+
+    // ================= Logo：Gemini =================
     "logo": {
-        "source": "~/.config/fastfetch/images/*.png",
+        "source": "~/.config/fastfetch/images/gemini_g.png",
         "type": "kitty",
         "height": 28,
         "padding": {
@@ -10,14 +13,24 @@
             "right": 1
         }
     },
+
+    // ================= 全局显示设置 =================
     "display": {
         "separator": "  󰁔  ",
         "color": {
-            "keys": "blue"
+            "keys": "#b4befe"
+        },
+        "percent": {
+            "type": 3
         }
     },
+
     "modules": [
-        // ================= 顶部：系统信息 =================
+
+        // =============================================
+        // 顶部：系统信息
+        // =============================================
+
         {
             "type": "custom",
             "format": "\u001b[38;2;180;190;254m  󰣇  本喵的系统喵~\u001b[0m"
@@ -30,7 +43,7 @@
             "type": "os",
             "key": "  󰌽 系统喵",
             "keyColor": "#b4befe",
-            "format": "\u001b[38;2;243;139;168mArch \u001b[38;2;250;179;135m(Btw) \u001b[38;2;249;226;175mx\u001b[38;2;166;227;161m8\u001b[38;2;148;226;213m6\u001b[38;2;137;180;250m_\u001b[38;2;203;166;247m67\u001b[0m"
+            "format": "\u001b[38;2;137;180;250m{pretty-name}\u001b[0m"
         },
         {
             "type": "kernel",
@@ -72,9 +85,13 @@
             "type": "custom",
             "format": "\u001b[38;2;180;190;254m╰─────────────────────────────────────────────────────────╯\u001b[0m"
         },
+
         "break",
 
-        // ================= 中部：硬件与开发环境 =================
+        // =============================================
+        // 中部：硬件与开发环境
+        // =============================================
+
         {
             "type": "title",
             "key": "  󰀄 铲屎官"
@@ -83,24 +100,70 @@
             "type": "custom",
             "format": "\u001b[38;2;203;166;247m╭─────────────────────────────────────────────────────────╮\u001b[0m"
         },
+        // CPU
         {
             "type": "cpu",
             "key": "  󰻠 大脑喵",
             "keyColor": "#cba6f7",
-            "format": "\u001b[38;2;235;160;172m{1}\u001b[0m"
+            "format": "\u001b[38;2;245;194;231m{1}\u001b[0m"
         },
+        
+        // GPU
         {
             "type": "gpu",
             "key": "  󰢮 画图喵",
             "keyColor": "#cba6f7",
             "format": "\u001b[38;2;148;226;213m{1} {2}\u001b[0m"
         },
+        
+        // 主板
+        {
+            "type": "board",
+            "key": "  󰚗 主板喵",
+            "keyColor": "#cba6f7",
+            "format": "\u001b[38;2;203;166;247m{vendor} {name}\u001b[0m"
+        },
+        
+        // 网络
+        {
+            "type": "localip",
+            "key": "  󰖟 网络喵",
+            "keyColor": "#94e2d5",
+            "format": "\u001b[38;2;137;220;235m{ifname} {ipv4}\u001b[0m"
+        },
+
+        // 内存：恢复原来的彩虹进度条脚本
         {
             "type": "command",
             "key": "  󰍛 记忆喵",
             "keyColor": "#fab387",
             "text": "~/.config/fastfetch/rainbow_bar.sh"
         },
+        
+        // 磁盘：修复双百分号
+        {
+            "type": "command",
+            "key": "  󰋊 仓库喵",
+            "keyColor": "#fab387",
+            "text": "~/.config/fastfetch/disk_bar.sh"
+        },
+
+        // 主板信息
+        {
+            "type": "board",
+            "key": "  󰚗 主板喵",
+            "keyColor": "#cba6f7",
+            "format": "\u001b[38;2;203;166;247m{vendor} {name}\u001b[0m"
+        },
+
+        // 网络信息
+        {
+            "type": "localip",
+            "key": "  󰖟 网络喵",
+            "keyColor": "#94e2d5",
+            "format": "\u001b[38;2;137;220;235m{ifname} {ipv4}\u001b[0m"
+        },
+
         {
             "type": "command",
             "key": "  󰞀 壳壳喵",
@@ -129,16 +192,19 @@
             "type": "uptime",
             "key": "  󰔛 醒着喵",
             "keyColor": "#f38ba8",
-            // 👇 修复：使用正确的命名占位符组合
             "format": "\u001b[38;2;249;226;175m{days}d {hours}h {minutes}m\u001b[0m"
         },
         {
             "type": "custom",
             "format": "\u001b[38;2;203;166;247m╰─────────────────────────────────────────────────────────╯\u001b[0m"
         },
+
         "break",
 
-        // ================= 底部：时间、年龄与色板 =================
+        // =============================================
+        // 底部：时间、年龄与色板
+        // =============================================
+
         {
             "type": "custom",
             "format": "\u001b[38;2;166;227;161m  󱫐  时间与杂鱼喵~\u001b[0m"
@@ -157,7 +223,7 @@
             "type": "command",
             "key": "  󰃭 几岁喵",
             "keyColor": "#f9e2af",
-            "text": "if [ -f /etc/install-date ]; then install_date=$(date -d $(cat /etc/install-date) +%s); current=$(date +%s); echo $(( (current - install_date) / 86400 )) days; else echo '未知喵~'; fi"
+            "text": "if [ -f /etc/install-date ]; then install_date=$(date -d \"$(cat /etc/install-date)\" +%s); current=$(date +%s); echo $(( (current - install_date) / 86400 )) days; else echo '未知喵~'; fi"
         },
         {
             "type": "custom",
@@ -169,11 +235,13 @@
             "type": "custom",
             "format": "\u001b[38;2;166;227;161m╰─────────────────────────────────────────────────────────╯\u001b[0m"
         },
+
         {
             "type": "colors",
             "paddingLeft": 3,
             "symbol": "circle"
         },
+
         "break"
     ]
 }
