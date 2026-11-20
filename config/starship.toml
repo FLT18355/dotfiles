@@ -9,7 +9,7 @@ $username\
     at \
     $directory\
 )\
-$git_branch\
+$git_branch$git_status\
 $cmd_duration${custom.proxy}\
 (\
     $python\
@@ -84,7 +84,19 @@ style = "bold fg:sky"
 symbol = " "
 
 [git_status]
-disabled = true
+disabled = false
+format = "[$all_status$ahead_behind]($style)"
+style = "bold fg:peach"
+conflicted = "󰌹 "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕"
+modified = " "
+staged = " "
+untracked = " "
+renamed = "➜ "
+deleted = " "
+stashed = " "
 
 [docker_context]
 disabled = false
@@ -134,12 +146,6 @@ style = "bold fg:mauve"
 symbol = " "
 version_format = "${raw}"
 disabled = false
-
-[custom.proxy]
-command = "echo $http_proxy $all_proxy $HTTP_PROXY $ALL_PROXY | tr ' ' '\\n' | grep -v '^$' | head -n1 | sed -E 's|.*:||'"
-when = "test -n \"$http_proxy\" -o -n \"$all_proxy\" -o -n \"$HTTP_PROXY\" -o -n \"$ALL_PROXY\""
-style = "bold fg:peach"
-format = "[󰲝 $output]($style) "
 
 # >>> Catppuccin Mocha (紫色主调) >>>
 [palettes.catppuccin_mocha]
