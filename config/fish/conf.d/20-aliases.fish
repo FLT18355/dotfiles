@@ -7,10 +7,10 @@
 # 写法：command <原命令> $argv，前面的 command 防止递归调用自己。
 
 # ---- 目录导航 ----
-function th --wraps=cd --description '回到主目录'
+function th --wraps=cd --description 回到主目录
     builtin cd ~ $argv
 end
-function .. --wraps=cd --description '上级目录'
+function .. --wraps=cd --description 上级目录
     builtin cd .. $argv
 end
 function ... --wraps=cd
@@ -56,7 +56,7 @@ end
 function ln --wraps=ln
     command ln -s $argv
 end
-function tch --wraps=touch --description 'touch'
+function tch --wraps=touch --description touch
     command touch $argv
 end
 function cat --wraps=bat --description '用 bat 替代 cat'
@@ -161,9 +161,13 @@ end
 function dsh --wraps=node
     command node --expose-internals /usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js $argv
 end
-function met --wraps=metrocity --description '屏保'
+function met --wraps=metrocity --description 屏保
     command metrocity $argv
 end
 function l --wraps=lazygit --description 'lazygit 终端 UI'
     command lazygit $argv
 end
+function n --wraps=neko --description neko音乐播放器awa
+    command neko $argv
+end
+
