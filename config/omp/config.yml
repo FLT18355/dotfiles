@@ -1,0 +1,18 @@
+setupVersion: 3
+theme:
+  dark: dark-catppuccin
+  light: dark-catppuccin
+modelRoles:
+  vision: modelscope/Qwen/Qwen3.8-Flash-Next
+  default: agnes/agnes-3.0-flash:xhigh
+statusLine:
+  separator: powerline-thin
+  preset: default
+symbolPreset: nerd
+title:
+  icons: nf+emoji
+colorBlindMode: false
+retry:
+  fallbackChains: {}
+update:
+  auto: false
