@@ -1,14 +1,11 @@
-# name: 'Catppuccin Mocha'
-# url: 'https://github.com/catppuccin/fish'
-
 [light]
 # preferred_background: eff1f5
 fish_color_normal 4c4f69
-fish_color_command 1e66f5
-fish_color_param dd7878
-fish_color_keyword 8839ef
+fish_color_command 8839ef
+fish_color_param ea76cb
+fish_color_keyword 7287fd
 fish_color_quote 40a02b
-fish_color_redirection ea76cb
+fish_color_redirection 04a5e5
 fish_color_end fe640b
 fish_color_comment 8c8fa1
 fish_color_error d20f39
@@ -20,70 +17,70 @@ fish_color_operator ea76cb
 fish_color_escape e64553
 fish_color_autosuggestion 9ca0b0
 fish_color_cancel d20f39
-fish_color_cwd df8e1d
-fish_color_user 179299
+fish_color_cwd 8839ef
+fish_color_user 7287fd
 fish_color_host 1e66f5
-fish_color_host_remote 40a02b
+fish_color_host_remote 179299
 fish_color_status d20f39
 fish_pager_color_progress 9ca0b0
-fish_pager_color_prefix ea76cb
+fish_pager_color_prefix 8839ef
 fish_pager_color_completion 4c4f69
 fish_pager_color_description 9ca0b0
 
 [dark]
 # preferred_background: 1e1e2e
 fish_color_normal cdd6f4
-fish_color_command 89b4fa
-fish_color_param f2cdcd
-fish_color_keyword cba6f7
+fish_color_command cba6f7
+fish_color_param f5c2e7
+fish_color_keyword b4befe
 fish_color_quote a6e3a1
-fish_color_redirection f5c2e7
+fish_color_redirection 89dceb
 fish_color_end fab387
-fish_color_comment 7f849c
+fish_color_comment 6c7086
 fish_color_error f38ba8
-fish_color_gray 6c7086
-fish_color_selection --background=313244
-fish_color_search_match --background=313244
+fish_color_gray 585b70
+fish_color_selection --background=45475a
+fish_color_search_match --background=45475a
 fish_color_option a6e3a1
 fish_color_operator f5c2e7
 fish_color_escape eba0ac
 fish_color_autosuggestion 6c7086
 fish_color_cancel f38ba8
-fish_color_cwd f9e2af
-fish_color_user 94e2d5
+fish_color_cwd cba6f7
+fish_color_user b4befe
 fish_color_host 89b4fa
-fish_color_host_remote a6e3a1
+fish_color_host_remote 94e2d5
 fish_color_status f38ba8
 fish_pager_color_progress 6c7086
-fish_pager_color_prefix f5c2e7
+fish_pager_color_prefix cba6f7
 fish_pager_color_completion cdd6f4
 fish_pager_color_description 6c7086
 
 [unknown]
 # preferred_background: 1e1e2e
-fish_color_normal cdd6f4
-fish_color_command 89b4fa
-fish_color_param f2cdcd
-fish_color_keyword cba6f7
-fish_color_quote a6e3a1
-fish_color_redirection f5c2e7
-fish_color_end fab387
-fish_color_comment 7f849c
-fish_color_error f38ba8
-fish_color_gray 6c7086
-fish_color_selection --background=313244
-fish_color_search_match --background=313244
-fish_color_option a6e3a1
-fish_color_operator f5c2e7
-fish_color_escape eba0ac
-fish_color_autosuggestion 6c7086
-fish_color_cancel f38ba8
-fish_color_cwd f9e2af
-fish_color_user 94e2d5
-fish_color_host 89b4fa
-fish_color_host_remote a6e3a1
-fish_color_status f38ba8
-fish_pager_color_progress 6c7086
-fish_pager_color_prefix f5c2e7
-fish_pager_color_completion cdd6f4
-fish_pager_color_description 6c7086
+fish_color_normal cdd6f4          # Text (默认文本，保留浅灰)
+fish_color_command cba6f7         # Mauve (命令：主紫)
+fish_color_param f5c2e7           # Pink (参数：粉紫)
+fish_color_keyword b4befe         # Lavender (关键字：淡紫)
+fish_color_quote a6e3a1           # Green (引号：保留绿色，保持可读性)
+fish_color_redirection 89dceb     # Sky (重定向：天蓝)
+fish_color_end fab387             # Peach (结束符：桃橙)
+fish_color_comment 6c7086         # Overlay0 (注释：深灰紫)
+fish_color_error f38ba8           # Red (错误：保留红色)
+fish_color_gray 585b70            # Surface2 (灰色/前缀)
+fish_color_selection --background=45475a # Surface1 (选中背景)
+fish_color_search_match --background=45475a # Surface1 (搜索匹配背景)
+fish_color_option a6e3a1          # Green (选项：保留绿色)
+fish_color_operator f5c2e7        # Pink (操作符：粉紫)
+fish_color_escape eba0ac          # Maroon (转义字符：暗红)
+fish_color_autosuggestion 6c7086  # Overlay0 (自动补全提示：深灰紫)
+fish_color_cancel f38ba8          # Red (取消：保留红色)
+fish_color_cwd cba6f7             # Mauve (当前目录：主紫)
+fish_color_user b4befe            # Lavender (用户：淡紫)
+fish_color_host 89b4fa            # Blue (主机：保留蓝色，区分度好)
+fish_color_host_remote 94e2d5     # Teal (远程主机：保留青色)
+fish_color_status f38ba8          # Red (状态：保留红色)
+fish_pager_color_progress 6c7086  # Overlay0 (分页器加载进度)
+fish_pager_color_prefix cba6f7    # Mauve (分页器前缀)
+fish_pager_color_completion cdd6f4# Text (分页器补全)
+fish_pager_color_description 6c7086 # Overlay0 (分页器描述)
