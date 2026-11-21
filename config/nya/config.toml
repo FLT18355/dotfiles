@@ -1,0 +1,21 @@
+# nya config
+# 路径支持 ~ 开头。cookies 留空表示不使用。
+
+[download]
+dir = "~/Downloads"
+cookies = "~/cookies.txt"
+playlist = false
+
+[video]
+format = "bestvideo*+bestaudio/best"
+merge = "mp4"
+
+[audio]
+format = "mp3"
+quality = "0"
+
+[output]
+template = "%(title)s [%(id)s].%(ext)s"
+
+[tool]
+yt_dlp = "yt-dlp"
