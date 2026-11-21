@@ -10,6 +10,10 @@ brew "gh"
 brew "herdr"
 # Handy way to save and run project-specific commands
 brew "just"
+# Simple terminal UI for git commands
+brew "lazygit"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
 # Terminal UI OS (Terminal Multiplexer)
@@ -23,6 +27,7 @@ brew "zoxide"
 cargo "cargo-cache"
 cargo "metrocity"
 cargo "neko"
+cargo "nya"
 uv "ftbcli"
 uv "gitx"
 uv "ipython"
