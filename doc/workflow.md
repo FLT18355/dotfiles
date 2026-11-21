@@ -12,7 +12,9 @@
   - bun
   - gitx-tui: 自己写的github TUI
   - starship: 美化命令行提示符
-  - herdr: AI时代的tmux
+  - herdr: AI时代的tmux(TUI)
+    - herdr-sidebar(侧边栏)
+    - herdr.auto-title(自动标题)
   - atuin: 历史管理器
   
 - 玩具:
