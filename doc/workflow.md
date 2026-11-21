@@ -2,6 +2,7 @@
 
 **终端**: 使用的是*Konsole*
 **配色方案**: 整体使用Catppuccin Mocha紫色调
+**鼠标主题**: Cartoonish-Bold
 
 - 工具:
   - yazi: 文件管理器
