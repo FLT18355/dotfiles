@@ -3,6 +3,7 @@
 **终端**: 使用的是*Konsole*
 **配色方案**: 整体使用Catppuccin Mocha紫色调
 **鼠标主题**: Cartoonish-Bold
+**字体**: Maple Mono NF CN
 
 - 工具:
   - yazi: 文件管理器
@@ -23,9 +24,8 @@
   - Homebrew
 
 - 代码编辑器
-  - neovim
+  - neovim(lazyvim)
 
 - Agent
-  - opencode
   - pi
   - oh-my-pi
