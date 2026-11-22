@@ -38,9 +38,6 @@ function lt --wraps=eza --description 'eza 两层树'
 end
 
 # ---- 文件操作 ----
-function mkdir --wraps=mkdir
-    command mkdir -p $argv
-end
 function mk --wraps=mkdir --description 'mkdir -p'
     command mkdir -p $argv
 end
@@ -109,36 +106,19 @@ function wget --wraps=wget
 end
 
 # ---- 系统维护 ----
-function df --wraps=df
-    command df -h $argv
-end
 function du --wraps=dust --description '用 dust 替代 du'
     command dust $argv
-end
-function top --wraps=btop --description '用 btop 替代 top'
-    command btop $argv
 end
 function cl --wraps=clear
     command clear $argv
 end
 
 # ---- 搜索 ----
-function ftext --wraps=rg
-    command rg --type txt $argv
-end
-function fcode --wraps=rg
-    command rg --type py --type js --type c $argv
-end
+# ...
 
 # ---- 工具 ----
 function glow --wraps=glow
     command glow -s $HOME/.config/glow/catppuccin-mocha.json $argv
-end
-function ncat --wraps=nyancat
-    command nyancat $argv
-end
-function tldr --wraps=tldr
-    command tldr -L zh $argv
 end
 function ffc --wraps=fastfetch
     command fastfetch $argv
@@ -146,20 +126,11 @@ end
 function fs --wraps=fish
     command fish $argv
 end
-function fsr --wraps=fisher
-    command fisher $argv
-end
-function timer --description '计时 read'
-    time read $argv
-end
 function e --wraps=exit
     command exit $argv
 end
 function her --wraps=herdr
     command herdr $argv
-end
-function dsh --wraps=node
-    command node --expose-internals /usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js $argv
 end
 function met --wraps=metrocity --description 屏保
     command metrocity $argv
@@ -167,7 +138,15 @@ end
 function l --wraps=lazygit --description 'lazygit 终端 UI'
     command lazygit $argv
 end
-function n --wraps=neko --description neko音乐播放器awa
+function n --wraps=neko --description neko音乐播放器
     command neko $argv
 end
+# i use arch btw.
+function btw --wraps=pacman --description pacman-\>btw
+    command sudo pacman $argv
+end
 
+# brew为什么不能是blue?
+function blue --wraps=brew --description homeblue
+    command brew $argv
+end
