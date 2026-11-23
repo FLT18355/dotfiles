@@ -1,3 +1,4 @@
+tap "flt18355/nekos", "git@github.com:FLT18355/homebrew-nekos.git", trusted: true
 # Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
 # Command-line fuzzy finder written in Go
@@ -16,6 +17,10 @@ brew "lazygit"
 brew "neovim"
 # Animated pipes terminal screensaver
 brew "pipes-sh"
+# Cross-shell prompt for astronauts
+brew "starship"
+# General purpose fuzzy finder TUI
+brew "television"
 # Terminal UI OS (Terminal Multiplexer)
 brew "tuios"
 # Extremely fast Python package installer and resolver, written in Rust
@@ -24,9 +29,14 @@ brew "uv"
 brew "yazi"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Terminal GitHub workbench built on ratatui and crossterm
+brew "flt18355/nekos/gtx"
+# Terminal music player
+brew "flt18355/nekos/neko", trusted: true
+# AI coding agent CLI (oh-my-pi)
+brew "flt18355/nekos/omp"
 cargo "cargo-cache"
 cargo "metrocity"
-cargo "neko"
 cargo "nya"
 uv "ftbcli"
 uv "gitx"
