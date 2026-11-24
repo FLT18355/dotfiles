@@ -1,5 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# ==========================================
+# 布局配置 (紫色系 Powerline 风格)
+# ==========================================
 format = """
 [](blue)\
 $os\
@@ -20,13 +23,16 @@ $python\
 $conda\
 [](bg:surface1 fg:yellow)\
 $time\
+$cmd_duration\
 [ ](fg:surface1)\
 $line_break\
-$cmd_duration\
 $character"""
 
 palette = 'catppuccin_mocha'
 
+# ==========================================
+# 系统信息模块
+# ==========================================
 [os]
 disabled = false
 style = "bg:blue fg:crust"
@@ -41,6 +47,9 @@ style_user = "bg:blue fg:crust"
 style_root = "bg:blue fg:crust"
 format = '[ $user ]($style)'
 
+# ==========================================
+# 路径与 Git 模块
+# ==========================================
 [directory]
 style = "bg:pink fg:crust"
 format = "[ 󰉋 $path ]($style)"
@@ -55,7 +64,9 @@ format = '[ $symbol $branch ]($style)'
 style = "bg:mauve fg:crust"
 format = '[($all_status$ahead_behind )]($style)'
 
-# ================= 语言段 =================
+# ==========================================
+# 语言环境模块
+# ==========================================
 [nodejs]
 symbol = ""
 style = "bg:lavender fg:crust"
@@ -91,29 +102,37 @@ symbol = "󰐊"
 style = "bg:yellow fg:crust"
 format = '[ $symbol $environment ]($style)'
 
+# ==========================================
+# 时间 + 命令耗时（同一块 surface1）
+# ==========================================
 [time]
 disabled = false
 time_format = "%R"
 style = "bg:surface1 fg:text"
-# 去除了时间后面的“喵”
 format = '[ 󱑎 $time ]($style)'
 
+[cmd_duration]
+show_milliseconds = false
+format = "[ 󱎫 $duration ]($style)"
+style = "bg:surface1 fg:peach"
+disabled = false
+min_time_to_notify = 45000
+
+# ==========================================
+# 其他信息模块
+# ==========================================
 [line_break]
 disabled = false
 
 [character]
 disabled = false
-success_symbol = '[󰁔](bold fg:green)'
-# 去除了错误提示里的“喵呜”
-error_symbol = '[󰅚 >_<](bold fg:red)'
+# 去除多余空格，顶格显示
+success_symbol = '[ ](bold fg:mauve)'
+error_symbol = '[ ](bold fg:red)'
 
-[cmd_duration]
-show_milliseconds = false
-format = "[ 󱎫 $duration ]($style)"
-style = "fg:green"
-disabled = false
-min_time_to_notify = 45000
-
+# ==========================================
+# Catppuccin Mocha 调色板
+# ==========================================
 [palettes.catppuccin_mocha]
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
