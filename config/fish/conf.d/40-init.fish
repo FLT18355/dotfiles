@@ -12,7 +12,7 @@ set -g fish_greeting ""
 if status is-interactive
 
     # 1. 设置终端主题
-        fish_config theme choose catppuccin-mocha
+    fish_config theme choose catppuccin-mocha
 
     # 2. 提示符配置 (Starship)
     starship init fish | source
@@ -22,9 +22,9 @@ if status is-interactive
     end
 
     # 3. 模糊搜索与目录跳转
-    fzf --fish | source
+    # fzf --fish | source
     zoxide init fish | source
-    # tv init fish | source # 可选: Television 模糊搜索
+    tv init fish | source # Television 模糊搜索
 
     # 4. 历史记录管理 (Atuin)
     # 禁用默认快捷键绑定，防止与原生 Fish 历史搜索冲突

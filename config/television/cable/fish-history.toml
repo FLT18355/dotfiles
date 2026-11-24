@@ -1,0 +1,16 @@
+[metadata]
+name = "fish-history"
+description = "Search fish shell history"
+
+[source]
+command = "history"
+shell = "fish"
+
+[preview]
+command = "echo '{}'"
+
+[action]
+action_type = "output"
+
+[display]
+preview = true
