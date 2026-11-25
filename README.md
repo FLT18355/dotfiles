@@ -2,6 +2,8 @@
 
 # 🚀 FLT18355's Dotfiles
 
+**i use Arch btw.**
+
 <img src="./assets/1544x1544_circle.png" width="180" style="border-radius: 50%;" alt="Logo">
 
 **一套精心配置、高度定制化的 Linux 开发环境**<br>
