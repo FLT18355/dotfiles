@@ -29,12 +29,14 @@ brew "uv"
 brew "yazi"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Modern terminal-based text editor with plugin support
+brew "flt18355/nekos/fresh", trusted: true
 # Terminal GitHub workbench built on ratatui and crossterm
 brew "flt18355/nekos/gtx"
 # Terminal music player
 brew "flt18355/nekos/neko", trusted: true
 # AI coding agent CLI (oh-my-pi)
-brew "flt18355/nekos/omp"
+brew "flt18355/nekos/omp", pin: true
 cargo "cargo-cache"
 cargo "metrocity"
 cargo "nya"
