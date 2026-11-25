@@ -26,7 +26,8 @@
   - Homebrew
 
 - 代码编辑器
-  - neovim(lazyvim)
+  - neovim(lazyvim) 已放弃
+  - fresh(比neovim更快, 更好)
 
 - Agent
   - pi
