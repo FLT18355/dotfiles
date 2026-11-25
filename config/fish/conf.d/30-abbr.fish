@@ -25,3 +25,10 @@ abbr --add btwi "btw -S"
 abbr --add btwy "btw -Sy"
 abbr --add btwyy "btw -Syy"
 abbr --add btwu "btw -Syu"
+
+# 杂项
+abbr --add f fresh # fresh缩写
+abbr --add ffc fastfetch
+abbr --add h herdr
+abbr --add l lazygit
+abbr --add j just
