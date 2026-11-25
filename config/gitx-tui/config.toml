@@ -1,0 +1,30 @@
+theme = "violet"
+transparent = false
+proxy = "https://v4.gh-proxy.org"
+repos_ttl_secs = 300
+detail_ttl_secs = 900
+search_ttl_secs = 600
+search_history = [
+    "fresh",
+    "catppuccin",
+    "catppuccin/cur",
+    "realsr-ncnn-vulkan-model",
+    "Real-ESRGAN",
+    "AB Download Manager",
+    "Pacsea",
+    "pdfrg/must",
+]
+show_file_tree = true
+show_readme = true
+download_dir = "~/Downloads/gitx-tui"
+clone_dir = "~/gitx-tui/clones"
+commit_limit = 50
+pinned_repos = [
+    "casey/just",
+    "cli/cli",
+    "can1357/oh-my-pi",
+    "herdrdev/herdr",
+    "ryanoasis/nerd-fonts",
+]
+recent_repos = ["FLT18355/dotfiles"]
+default_page = "home"

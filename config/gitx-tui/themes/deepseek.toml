@@ -1,0 +1,41 @@
+name = "DeepSeek"
+flavor = "deepseek"
+
+# 背景色：采用 DeepSeek 标志性的深海蓝紫
+base = "#1a1b26"      # 主背景 (深邃夜空蓝)
+mantle = "#16161e"    # 侧边栏/次级背景
+crust = "#101014"     # 最深色 (终端边缘/底色)
+surface0 = "#2b2d3a"  # 表面色 (卡片/输入框)
+surface1 = "#3b3d4f"  # 表面色悬停
+surface2 = "#4f5166"  # 表面色边框/分割线
+
+# 文本色：保持清晰易读
+text = "#e2e8f0"      # 主要文字 (柔和的亮白)
+subtext1 = "#c0caf5"  # 次级文字
+subtext0 = "#a9b1d6"  # 弱化文字 (注释/描述)
+
+# 辅助色/强调色：融入 DeepSeek 的品牌蓝
+overlay0 = "#5c5f70"  # 遮罩/未激活图标
+overlay1 = "#737791"  # 悬停遮罩
+overlay2 = "#8a8fad"  # 选中的遮罩
+
+# DeepSeek 核心品牌色系
+deepseek_blue = "#4d6bfe" # DeepSeek 标志性亮蓝色 (主高亮/重要按钮)
+deepseek_dark = "#3b53cb" # 深蓝色 (次要高亮)
+cyan = "#36e2ea"      # 科技青色 (链接/活跃状态)
+
+# 语义化颜色 (适配终端环境下的日志级别、状态等)
+lavender = "#b4befe"  # 淡紫 (一般用于强调)
+blue = "#4d6bfe"      # 主蓝 (同 deepseek_blue)
+sapphire = "#3b82f6"  # 蓝宝石
+sky = "#0ea5e9"       # 天空蓝 (信息提示)
+teal = "#14b8a6"      # 蓝绿色
+green = "#22c55e"     # 绿色 (成功/添加)
+yellow = "#eab308"    # 黄色 (警告)
+peach = "#f97316"     # 橙色 (提示)
+maroon = "#9f1239"    # 暗红
+red = "#ef4444"       # 红色 (错误/删除)
+mauve = "#a855f7"     # 紫红色 (高亮/特殊标记)
+pink = "#ec4899"      # 粉色
+flamingo = "#f472b6"  # 火烈鸟粉
+rosewater = "#fbcfe8" # 玫瑰水 (柔和强调)
