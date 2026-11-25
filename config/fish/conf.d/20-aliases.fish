@@ -96,9 +96,6 @@ end
 function find --wraps=fd --description '用 fd 替代 find'
     command fd $argv
 end
-function j --wraps=just
-    command just $argv
-end
 
 # ---- 下载工具 ----
 function wget --wraps=wget
@@ -120,23 +117,14 @@ end
 function glow --wraps=glow
     command glow -s $HOME/.config/glow/catppuccin-mocha.json $argv
 end
-function ffc --wraps=fastfetch
-    command fastfetch $argv
-end
 function fs --wraps=fish
     command fish $argv
 end
 function e --wraps=exit
     command exit $argv
 end
-function her --wraps=herdr
-    command herdr $argv
-end
 function met --wraps=metrocity --description 屏保
     command metrocity $argv
-end
-function l --wraps=lazygit --description 'lazygit 终端 UI'
-    command lazygit $argv
 end
 function n --wraps=neko --description neko音乐播放器
     command neko $argv
@@ -145,7 +133,6 @@ end
 function btw --wraps=pacman --description pacman-\>btw
     command sudo pacman $argv
 end
-
 # brew为什么不能是blue?
 function blue --wraps=brew --description homeblue
     command brew $argv
