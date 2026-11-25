@@ -4,6 +4,7 @@
 **配色方案**: 整体使用Catppuccin Mocha紫色调
 **鼠标主题**: Cartoonish-Bold
 **字体**: Maple Mono NF CN
+**Shell**: Fish
 
 - 工具:
   - yazi: 文件管理器
@@ -33,3 +34,4 @@
 - Agent
   - pi
   - oh-my-pi
+  - copilot
