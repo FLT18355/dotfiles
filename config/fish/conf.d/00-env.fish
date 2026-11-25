@@ -4,14 +4,14 @@
 
 # --- 编辑器 ---
 # 默认编辑器；EDITOR 供 git/less 等调用，VISUAL 供支持可视编辑的程序调用。
-set -gx EDITOR nvim
-set -gx VISUAL nvim
+set -gx EDITOR fresh
+set -gx VISUAL fresh
 
 # --- PATH ---
 # fish_add_path 幂等去重，重复 source 不会累加路径。
 # -a：追加到末尾（保持原顺序）；想让这些目录优先命中，去掉 -a 改为前插。
 fish_add_path -a $HOME/go/bin $HOME/.cargo/bin $HOME/.local/bin \
-                  $HOME/bin $HOME/.opencode/bin
+                  $HOME/bin
 
 # --- 语言 / 本地化 ---
 # tldr 页面语言。
