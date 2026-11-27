@@ -14,6 +14,7 @@
   - herdr: AI时代的tmux(TUI)
     - herdr-sidebar(侧边栏)
     - herdr.auto-title(自动标题)
+  - tuios: 终端里面的窗口平铺器
   - atuin: 历史管理器
   - fzf/tv(television)
   

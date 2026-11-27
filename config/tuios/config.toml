@@ -635,3 +635,12 @@ corner = 'bottom-right'
 
 [dock]
 [dock.clock]
+
+# 自定义命令
+[[keybindings.command]]
+key = "prefix+alt+g"       # 快捷键，可按需修改
+type = "popup"           # popup
+command = "lazygit"        # 执行的命令
+description = "Lazygit"    # 描述，会在 which-key 菜单中显示
+width = "80%"              # 窗口宽度
+height = "80%"             # 窗口高度
