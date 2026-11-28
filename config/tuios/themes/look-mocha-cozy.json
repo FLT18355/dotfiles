@@ -1,0 +1,46 @@
+{
+  "id": "look-mocha-cozy",
+  "display_name": "Mocha Cozy",
+  "dark": true,
+  "fg": "#cdd6f4",
+  "bg": "#1e1e2e",
+  "cursor": "#f5e0dc",
+  "black": "#45475a",
+  "red": "#f38ba8",
+  "green": "#a6e3a1",
+  "yellow": "#f9e2af",
+  "blue": "#89b4fa",
+  "purple": "#f5c2e7",
+  "cyan": "#94e2d5",
+  "white": "#bac2de",
+  "bright_black": "#585b70",
+  "bright_red": "#f38ba8",
+  "bright_green": "#a6e3a1",
+  "bright_yellow": "#f9e2af",
+  "bright_blue": "#89b4fa",
+  "bright_purple": "#f5c2e7",
+  "bright_cyan": "#94e2d5",
+  "bright_white": "#a6adc8",
+  "chrome": {
+    "accent": "#cba6f7",
+    "accent_bright": "#f5c2e7",
+    "success": "#a6e3a1",
+    "warning": "#fab387",
+    "surface": "#313244",
+    "border": {
+      "unfocused": "#45475a"
+    },
+    "rule": "#313244",
+    "dots": {
+      "close": "#f38ba8",
+      "minimize": "#f9e2af",
+      "zoom": "#a6e3a1"
+    },
+    "dock": {
+      "ground": "#11111b"
+    },
+    "rail": {
+      "ground": "#181825"
+    }
+  }
+}

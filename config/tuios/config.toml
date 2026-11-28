@@ -10,144 +10,63 @@
 # are in use and shows the error on screen.
 
 # ============================================================================
-# APPEARANCE SETTINGS
+# APPEARANCE SETTINGS (融合自 Mocha Cozy 主题)
 # ============================================================================
-# Many of these can be changed live from the in-app settings page
-# (open it with the leader key followed by ',').
-#
-# border_style: rounded, normal, thick, double, hidden, block, ascii,
-#               outer-half-block, inner-half-block
-# dockbar_position: bottom, top, hidden
-# window_title_position: bottom, top, hidden
-# window_button_style: pill, dots (macOS traffic lights)
-# window_button_position: right, left. Independent of the style; dots and
-#               left is the shipped pair, the macOS arrangement
-# theme: color theme name (e.g. dracula, nord); empty for terminal colors
-# click_to_type: single (a click on a pane starts typing in it), double
-#               (two clicks do), off (a click only focuses)
-# auto_enter_terminal_on_focus: off (Tab keeps cycling windows),
-#               targeted (numbered select and arrows start typing),
-#               all (every covered focus command, including Tab)
-# [appearance.scrollbar]: style = thin, track; thumb/track = a one-cell glyph
-#               (track also takes "none"); tint = border, muted, #RRGGBB
-# background: off (your terminal shows through), theme (the theme's
-#               background), or #RRGGBB, for every surface at once
-# pane_background, desktop_background, window_chrome_background,
-#               dock_background, [appearance.sidebar] background: the same
-#               values for one surface; empty follows background, and a
-#               colour a program or the chrome chose always wins
-# ============================================================================
-
-# ============================================================================
-# KEYBINDINGS
-# ============================================================================
-# Set an action to [] to unbind it and hand the key back to the shell.
-# An empty list and a missing line are not the same thing. A line this file
-# does not have gets its default back the next time tuios starts; an action
-# set to [] stays empty.
-#
-# You do not have to edit this by hand. In tuios, open the keybind manager
-# (leader then k, or the command palette) and press ctrl+d on a binding to
-# remove it, or ctrl+x to take its key off every action. From a shell:
-#
-#   tuios keybinds unbind close_window w   # one key off one action
-#   tuios keybinds free alt+left           # off every action
-#
-# `tuios keybinds doctor` says which binding in each scope is live, what
-# clashes with what, and which keys never reach the program in the pane.
-#
-# [keybindings.global] acts in window mode and terminal mode alike. It binds
-# ctrl+p to the command palette and alt+space to the launcher, which costs
-# you fish's history-back and readline's set-mark. To move or drop either:
-#
-#   [keybindings.global]
-#   command_palette = ["ctrl+shift+p"]
-#   launcher = []
-#
-# [keybindings.terminal_mode] binds alt+arrows to move focus between panes.
-# In readline, fish and zsh, alt+left and alt+right move the cursor a word
-# at a time. If you want those back:
-#
-#   [keybindings.terminal_mode]
-#   terminal_focus_left = []
-#   terminal_focus_right = []
-#
-# alt+up and alt+down are unclaimed by the common shells, so they are the
-# safer pair to keep.
-#
-# hold_window_mode binds a key that puts tuios in window-management mode for
-# as long as it is physically held, and hands the previous mode back when it
-# is let go:
-#
-#   [keybindings.mode_control]
-#   hold_window_mode = ["leftalt"]
-#
-# It needs a terminal that speaks the Kitty keyboard protocol (Ghostty, kitty,
-# WezTerm, foot, Alacritty; not Terminal.app), because nothing else reports
-# that a key was released. Naming a modifier key (leftalt, rightalt, leftctrl,
-# leftsuper) asks the terminal for one more thing on top: every keystroke in
-# the session then arrives as an escape code. Any ordinary key (f13 to f63,
-# scrolllock, a spare letter) avoids that. Unbound by default.
-# ============================================================================
-
-# ============================================================================
-# DOCK COMPONENTS
-# ============================================================================
-# The dock is three ordered lists of component names. Leave [dock] out
-# entirely and the bar draws what it always drew; write the lists to
-# reorder it, and omit a name to drop that segment.
-#
-#   [dock]
-#   left   = ["mode", "workspaces", "trail", "tape"]
-#   center = ["windows"]
-#   right  = ["notifications", "copy-help", "cpu", "ram", "clock", "session-controls"]
-#
-# A cell of your own is a command whose first line of stdout is the text:
-#
-#   [dock.custom.branch]
-#   command = "git branch --show-current"
-#   refresh = "event:after-focus-change"   # or once, push, or "30s"
-#
-# and then "custom/branch" in one of the lists above. A component that
-# fails is hidden rather than left showing a stale value;
-# `tuios list-dock-components` says which and why.
-# ============================================================================
-
 [appearance]
-border_style = "glyphs"
+# 基础背景与透明度
+background = 'theme'
+desktop_background = '#11111b'
+dock_background = '#11111b'
+pane_background = ''
+window_chrome_background = ''
+
+# 核心美学：渐变边框、胶囊标题、圆点按钮
+border_focused_gradient = '#cba6f7 #f5c2e7 #fab387'
+border_gradient_angle = 30
+border_style = 'rounded'
+border_unfocused_color = '#45475a'
+dim_unfocused = 12
+
+window_button_style = 'dots'
+window_title_align = "center"
+window_title_style = "plain"
+window_title_position = 'top'
+window_button_position = 'left'
+hide_window_buttons = false
+
+# Dock 栏设置 (移到顶部)
+dockbar_position = 'top'
+dock_workspace_tab_format = '{icon} {name}'
+dock_compact = true
+dock_mode_pill = "tiling"
+
+# 其他交互外观
+theme = 'look-mocha-cozy'
+gap = 1
+show_clock = true
 zen_mode = 'disabled'
 links = 'all'
-hide_window_buttons = false
-window_button_style = 'dots'
-window_button_position = 'left'
 hide_scrollbar = false
 scrollback_lines = 10000
 scroll_lines = 3
 kitty_placeholders = 'auto'
 auto_enter_terminal_on_focus = 'off'
 click_to_type = 'double'
-dockbar_position = "bottom"
 preferred_shell = ''
 motion = 'full'
 modal_dim = 30
 whichkey_position = ''
-window_title_position = 'top'
 hide_clock = false
-show_clock = true
 show_cpu = false
 show_ram = true
-theme = "tuios-mocha-purple"
 border_focused_color = ''
-border_unfocused_color = ''
 window_title_format = ''
 zoom_max_width = 0
 niri_reverse_scroll = false
 niri_scroll_cells = 8
 prefix_repeat_time = 500
 max_fps = 0
-dock_workspace_tab_format = ''
 glyphs = "default"
-gap = 0
 tiling_scheme = 'spiral'
 master_ratio = 50
 scroll_column_width = 55
@@ -155,15 +74,7 @@ scroll_column_max = 90
 zoom_size = 95
 panel_padding = 2
 clock_format = '15:04:05'
-dim_unfocused = 0
 dim_multifocus = false
-background = 'off'
-pane_background = ''
-desktop_background = ''
-window_chrome_background = ''
-dock_background = ''
-dock_compact = true
-dock_mode_pill = "tiling"
 
 [appearance.scrollbar]
 style = 'track'
@@ -187,19 +98,43 @@ multi_format = 'plain'
 copy_entry = 'cursor'
 osc52_write = 'focused'
 
+# 侧边栏设置 (融合自 Mocha Cozy)
 [appearance.sidebar]
+background = '#181825'
+density = 'roomy'
 enabled = true
+header_style = 'icon'
 position = 'right'
-width = 24
+row_style = 'pill'
+sections = 'sessions,terminals,files'
+width = 26
+
+# 侧边栏其他细节
 workspaces = ''
-sections = 'sessions:25,terminals,files:25,agents:34'
 folder_click = 'navigate'
 editor = ''
 file_delete = 'trash'
-background = ''
 agent_rest_fold = '1h'
 show_numbers = false
 
+# ============================================================================
+# DOCK COMPONENTS (融合自 Mocha Cozy)
+# ============================================================================
+[dock]
+center = []
+left = ['mode', 'workspaces']
+right = ['clock', 'session-controls']
+
+[dock.clock]
+format = '15:04'
+
+[dock.tabs]
+# 自定义工作区图标 (类似 Nerd Font 的文件、音乐、代码图标)
+number_glyphs = ['󰋜', '󰝚', '󰸟']
+
+# ============================================================================
+# NOTIFICATIONS
+# ============================================================================
 [notifications]
 duration = 0
 warning_duration = 0
@@ -210,12 +145,13 @@ sound_mode = ''
 command = ''
 quiet_hours = ''
 
-[notifications.agent.states]
 [notifications.agent.sounds]
 done = ''
 needs_input = ''
 
-[notifications.mail]
+# ============================================================================
+# KEYBINDINGS (你的原生配置)
+# ============================================================================
 [keybindings]
 leader_key = 'ctrl+b'
 
@@ -303,7 +239,6 @@ toggle_help = ['?']
 [keybindings.system]
 toggle_spotlight = ['b']
 
-[keybindings.navigation]
 [keybindings.restore_minimized]
 restore_minimized_1 = ['shift+1', '!']
 restore_minimized_2 = ['shift+2', '@']
@@ -572,6 +507,9 @@ mail_page_up = ['pgup']
 mail_reply = ['r']
 mail_up = ['k', 'up', 'ctrl+p']
 
+# ============================================================================
+# DAEMON & STARTUP
+# ============================================================================
 [daemon]
 log_level = 'off'
 agent_detect_seconds = 0
@@ -583,13 +521,13 @@ persist_scrollback_kb = 0
 
 [startup]
 open_default_window = false
-tiled = true
 start_in_terminal_mode = false
 layout = 'bsp'
 daemon = true
+tiled = true
 
 [tape]
-autorun = 'ask'
+autorun = "ask"
 auto_review = false
 
 [debug]
@@ -616,6 +554,7 @@ radius = 10
 dim = 75
 edge = 'hard'
 shake = false
+enabled = false
 
 [hints]
 builtins = 'all'
@@ -633,14 +572,13 @@ width = 40
 height = 12
 corner = 'bottom-right'
 
-[dock]
-[dock.clock]
-
-# 自定义命令
+# ============================================================================
+# 自定义命令 (Lazygit 弹窗)
+# ============================================================================
 [[keybindings.command]]
-key = "prefix+alt+g"       # 快捷键，可按需修改
-type = "popup"           # popup
+key = "prefix+alt+g"       # 快捷键：Ctrl+B -> Alt+G
+type = "popup"             # 临时弹窗，退出 lazygit 自动关闭
 command = "lazygit"        # 执行的命令
-description = "Lazygit"    # 描述，会在 which-key 菜单中显示
+description = "Lazygit"    # 描述
 width = "80%"              # 窗口宽度
 height = "80%"             # 窗口高度

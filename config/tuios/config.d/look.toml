@@ -1,0 +1,48 @@
+# A tuios look. "tuios look apply" wrote this file.
+# "tuios look remove" deletes it. The next apply replaces it.
+# config.toml wins over this file. Change settings there.
+# look: Mocha Cozy
+# source: https://tuios.dev/r/19000276.toml
+# theme: look-mocha-cozy
+
+[appearance]
+background = 'theme'
+border_focused_gradient = '#cba6f7 #f5c2e7 #fab387'
+border_gradient_angle = 30
+border_style = 'rounded'
+border_unfocused_color = '#45475a'
+desktop_background = '#11111b'
+dim_unfocused = 12
+dock_background = '#11111b'
+dock_workspace_tab_format = '{icon} {name}'
+dockbar_position = 'top'
+gap = 1
+show_clock = true
+theme = 'look-mocha-cozy'
+window_button_style = 'dots'
+window_title_align = 'center'
+window_title_style = 'pill'
+
+[appearance.sidebar]
+background = '#181825'
+density = 'roomy'
+enabled = true
+header_style = 'icon'
+position = 'right'
+row_style = 'pill'
+sections = 'sessions,terminals,files'
+width = 26
+
+[dock]
+center = []
+left = ['mode', 'workspaces']
+right = ['clock', 'session-controls']
+
+[dock.clock]
+format = '15:04'
+
+[dock.tabs]
+number_glyphs = ['󰋜', '󰝚', '󰸟']
+
+[startup]
+tiled = true
