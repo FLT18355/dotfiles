@@ -3,7 +3,10 @@
 # ============================================
 
 # 第一步就是启用brew
-eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# 优化 brew 加载
+if not set -q HOMEBREW_PREFIX
+    eval (/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+end
 
 # 禁用默认欢迎语
 set -g fish_greeting ""

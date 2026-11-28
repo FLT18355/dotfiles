@@ -9,9 +9,11 @@ set -gx VISUAL fresh
 
 # --- PATH ---
 # fish_add_path 幂等去重，重复 source 不会累加路径。
-# -a：追加到末尾（保持原顺序）；想让这些目录优先命中，去掉 -a 改为前插。
-fish_add_path -a $HOME/go/bin $HOME/.cargo/bin $HOME/.local/bin \
-                  $HOME/bin
+fish_add_path $HOME/go/bin $HOME/.cargo/bin $HOME/.local/bin \
+              $HOME/bin
+# pnpm
+set -gx PNPM_HOME "/home/flt18355/.local/share/pnpm"
+fish_add_path $PNPM_HOME/bin
 
 # --- 语言 / 本地化 ---
 # tldr 页面语言。
@@ -69,10 +71,3 @@ set -gx HOMEBREW_NO_AUTO_UPDATE 1
 # 指向第三方兼容端点及默认模型。
 set -gx COPILOT_PROVIDER_BASE_URL https://apihub.agnes-ai.cn/v1
 set -gx COPILOT_MODEL agnes-2.5-flash
-
-# pnpm
-set -gx PNPM_HOME "/home/flt18355/.local/share/pnpm"
-if not string match -q -- "$PNPM_HOME/bin" $PATH
-  set -gx PATH "$PNPM_HOME/bin" $PATH
-end
-# pnpm end
