@@ -1,25 +1,27 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+scan_timeout = 500
+
 # ==========================================
-# 布局配置 (紫色系 Powerline 风格)
+# 布局配置 (紫色系主导 Powerline)
 # ==========================================
 format = """
-[](blue)\
+[](mauve)\
 $os\
 $username\
-[](bg:pink fg:blue)\
+[](bg:pink fg:mauve)\
 $directory\
-[](bg:mauve fg:pink)\
+[](bg:lavender fg:pink)\
 $git_branch\
 $git_status\
-[](bg:lavender fg:mauve)\
+[](bg:blue fg:lavender)\
 $c\
 $rust\
 $golang\
 $nodejs\
 $bun\
 $python\
-[](bg:yellow fg:lavender)\
+[](bg:yellow fg:blue)\
 $conda\
 [](bg:surface1 fg:yellow)\
 $time\
@@ -31,11 +33,11 @@ $character"""
 palette = 'catppuccin_mocha'
 
 # ==========================================
-# 系统信息模块
+# 系统信息模块 (主紫色)
 # ==========================================
 [os]
 disabled = false
-style = "bg:blue fg:crust"
+style = "bg:mauve fg:crust"
 format = '[$symbol]($style)'
 
 [os.symbols]
@@ -43,12 +45,12 @@ Arch = "󰣇"
 
 [username]
 show_always = true
-style_user = "bg:blue fg:crust"
-style_root = "bg:blue fg:crust"
+style_user = "bg:mauve fg:crust"
+style_root = "bg:mauve fg:crust"
 format = '[ $user ]($style)'
 
 # ==========================================
-# 路径与 Git 模块
+# 路径与 Git 模块 (粉紫、淡紫)
 # ==========================================
 [directory]
 style = "bg:pink fg:crust"
@@ -57,44 +59,44 @@ truncation_length = 3
 
 [git_branch]
 symbol = "󰊢"
-style = "bg:mauve fg:crust"
+style = "bg:lavender fg:crust"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:mauve fg:crust"
+style = "bg:lavender fg:crust"
 format = '[($all_status$ahead_behind )]($style)'
 
 # ==========================================
-# 语言环境模块
+# 语言环境模块 (蓝色辅助色)
 # ==========================================
 [nodejs]
 symbol = ""
-style = "bg:lavender fg:crust"
+style = "bg:blue fg:crust"
 format = '[ $symbol $version ]($style)'
 
 [bun]
 symbol = ""
-style = "bg:lavender fg:crust"
+style = "bg:blue fg:crust"
 format = '[ $symbol $version ]($style)'
 
 [c]
 symbol = " "
-style = "bg:lavender fg:crust"
+style = "bg:blue fg:crust"
 format = '[ $symbol $version ]($style)'
 
 [rust]
 symbol = ""
-style = "bg:lavender fg:crust"
+style = "bg:blue fg:crust"
 format = '[ $symbol $version ]($style)'
 
 [golang]
 symbol = ""
-style = "bg:lavender fg:crust"
+style = "bg:blue fg:crust"
 format = '[ $symbol $version ]($style)'
 
 [python]
 symbol = ""
-style = "bg:lavender fg:crust"
+style = "bg:blue fg:crust"
 format = '[ $symbol $version ]($style)'
 
 [conda]
@@ -103,7 +105,7 @@ style = "bg:yellow fg:crust"
 format = '[ $symbol $environment ]($style)'
 
 # ==========================================
-# 时间 + 命令耗时（同一块 surface1）
+# 时间 + 命令耗时（同一块 surface1 灰紫）
 # ==========================================
 [time]
 disabled = false
@@ -157,6 +159,6 @@ overlay0 = "#6c7086"
 surface2 = "#585b70"
 surface1 = "#45475a"
 surface0 = "#313244"
-base = "#1e1e2e"
+base = "#1e1e1e2e"
 mantle = "#181825"
 crust = "#11111b"
