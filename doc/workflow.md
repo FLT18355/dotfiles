@@ -35,4 +35,3 @@
 - Agent
   - pi
   - oh-my-pi
-  - copilot
