@@ -34,9 +34,9 @@ if status is-interactive
     set -gx ATUIN_NOBIND "true"
     atuin init fish | source
     
-    # 自定义 Atuin 呼出快捷键 (Ctrl+Up)
-    bind ctrl-up _atuin_search
-    bind -M insert ctrl-up _atuin_search
+    # 自定义 Atuin 呼出快捷键 (Ctrl+R)
+    bind ctrl-r _atuin_search
+    bind -M insert ctrl-r _atuin_search
 
     # 5. 补全系统 (可选)
     # carapace _carapace | source
