@@ -102,9 +102,6 @@ end
 # ...
 
 # ---- 工具 ----
-function glow --wraps=glow
-    command glow -s $HOME/.config/glow/catppuccin-mocha.json $argv
-end
 function fs --wraps=fish
     command fish $argv
 end
