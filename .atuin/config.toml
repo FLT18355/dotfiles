@@ -3,17 +3,23 @@
 # ==========================================
 dialect = "uk"
 timezone = "local"
-auto_sync = true
+
+# --- 同步策略修正 ---
+# 既然启用了后台守护进程 ([daemon]) 负责同步，这里建议关闭 auto_sync，避免两个同步任务互相干扰。
+auto_sync = false 
 update_check = true
 sync_frequency = "10m"
+
 search_mode = "fuzzy"
 filter_mode = "global"
 
 # ==========================================
 # 快捷键与 Shell 绑定
 # ==========================================
-# 选中后直接执行，而不是放回输入框
-enter_accept = true 
+# 关闭 Enter 直接执行，改为将命令放入输入框（与 Tab 键行为一致）。
+# 设置后，若想直接执行，可以使用 Ctrl+Enter（或其他自定义键位）。
+enter_accept = false 
+
 # 支持在 &&、|| 和 | 之后的连续补全
 command_chaining = true 
 
@@ -41,9 +47,9 @@ syntax_highlight = true
 # 自定义列显示：耗时、时间、工作目录、命令
 columns = ["duration", "time", { type = "directory", width = 25 }, "command"]
 
+# --- 主题设置 ---
 [theme]
-# 可选内置主题：default, autumn, marine
-name = "default" 
+name = "catppuccin-mocha-mauve"
 
 # ==========================================
 # 隐私与过滤
@@ -64,10 +70,10 @@ history_filter = [
     "^yay -Q",
     
     # 忽略直接通过管道传给 fzf 的临时命令
-    ".*\\| *fzf",
+    ".*\\| *fzf"
     
-    # 忽略sudo
-    "^sudo"
+    # 注意：移除了 "^sudo"。
+    # 系统级操作（如 sudo pacman -Syu）非常重要，不应被排除在历史记录之外。
 ]
 
 # ==========================================
@@ -107,7 +113,7 @@ width = "80%"
 height = "60%"
 
 # ==========================================
-# 守护进程
+# 守护进程 (Daemon)
 # ==========================================
 [daemon]
 # 启用后台守护进程进行同步，减少对终端的阻塞

@@ -1,0 +1,25 @@
+# ~/.config/atuin/themes/catppuccin-mocha-purple.toml
+[theme]
+name = "catppuccin-mocha-purple"
+
+[colors]
+# --- 核心界面语义 ---
+Base = "#cdd6f4"          # 默认文字（Text）
+Muted = "#6c7086"         # 次要文字/灰暗提示（Overlay0）
+Annotation = "#b4befe"    # 注释类/辅助说明（Lavender）
+Guidance = "#cba6f7"      # 帮助指引/上下文（Mauve）
+Important = "#f5c2e7"     # 需要强调的信息（Pink）
+Title = "#cba6f7"         # 标题/区域名（Mauve）
+
+# --- 警告与状态 ---
+AlertInfo = "#a6e3a1"     # 信息提示（Green）
+AlertWarn = "#f9e2af"     # 警告提示（Yellow）
+AlertError = "#f38ba8"    # 错误提示（Red）
+
+# --- 语法高亮 (Syntax Highlighting) ---
+SyntaxCommand = "#cba6f7"   # 命令词，如 git（Mauve）
+SyntaxFlag = "#f5c2e7"      # 参数旗标，如 -f/--flag（Pink）
+SyntaxString = "#a6e3a1"    # 字符串，如 "quote"（Green）
+SyntaxVariable = "#89dceb"  # 变量，如 $VAR（Sky）
+SyntaxOperator = "#89b4fa"  # 操作符，如 |, &&, >（Blue）
+SyntaxComment = "#6c7086"   # 注释，如 # comment（Overlay0）
