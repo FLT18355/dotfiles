@@ -1,26 +1,26 @@
 # : Manager [[[
 
 [mgr]
-cwd = { fg = "#cdd6f4" } # Text
+cwd = { fg = "#cba6f7", bold = true } # Mauve：当前工作目录，加粗突出
 
 # Find
-find_keyword  = { fg = "#f38ba8", bold = true, italic = true, underline = true } # Red
-find_position = { fg = "#f38ba8", bold = true, italic = true } # Red
+find_keyword  = { fg = "#f5c2e7", bold = true, italic = true, underline = true } # Pink
+find_position = { fg = "#b4befe", bold = true, italic = true } # Lavender
 
 # Marker
-marker_copied   = { fg = "#f5c2e7", bg = "#f5c2e7" } # Pink
-marker_cut      = { fg = "#eba0ac", bg = "#eba0ac" } # Maroon
-marker_marked   = { fg = "#f38ba8", bg = "#f38ba8" } # Red
-marker_selected = { fg = "#cba6f7", bg = "#cba6f7" } # Mauve
+marker_copied   = { fg = "#b4befe", bg = "#b4befe" } # Lavender
+marker_cut      = { fg = "#f5c2e7", bg = "#f5c2e7" } # Pink
+marker_marked   = { fg = "#cba6f7", bg = "#cba6f7" } # Mauve
+marker_selected = { fg = "#cba6f7", bg = "#cba6f7" } # Mauve：选中标记，核心高亮
 
 # Count
-count_copied   = { fg = "#1e1e2e", bg = "#f5c2e7" } # Base / Pink
-count_cut      = { fg = "#1e1e2e", bg = "#eba0ac" } # Base / Maroon
+count_copied   = { fg = "#1e1e2e", bg = "#b4befe" } # Base / Lavender
+count_cut      = { fg = "#1e1e2e", bg = "#f5c2e7" } # Base / Pink
 count_selected = { fg = "#1e1e2e", bg = "#cba6f7" } # Base / Mauve
 
 # Border
 border_symbol = "│"
-border_style  = { fg = "#cba6f7" } # Lavender
+border_style  = { fg = "#cba6f7" } # Mauve
 
 # : ]]]
 
@@ -36,7 +36,7 @@ padding = { open = "█", close = "█" }
 # : Tabs [[[
 
 [tabs]
-active    = { fg = "#b4befe", bold = true, bg = "#181825" } # Lavender / Mantle
+active    = { fg = "#1e1e2e", bold = true, bg = "#cba6f7" } # Base / Mauve：激活标签，紫底深字
 inactive  = { fg = "#a6adc8", bg = "#181825" } # Subtext0 / Mantle
 sep_inner = { open = "[", close = "]" }
 
@@ -47,11 +47,11 @@ sep_inner = { open = "[", close = "]" }
 
 [mode]
 # Mode
-normal_main = { bg = "#b4befe", fg = "#1e1e2e", bold = true } # Lavender / Base
+normal_main = { bg = "#cba6f7", fg = "#1e1e2e", bold = true } # Mauve / Base
 normal_alt  = { bg = "#313244", fg = "#cdd6f4" } # Surface0 / Text
 
 # Select mode
-select_main = { bg = "#89b4fa", fg = "#1e1e2e", bold = true } # Blue / Base
+select_main = { bg = "#b4befe", fg = "#1e1e2e", bold = true } # Lavender / Base
 select_alt  = { bg = "#313244", fg = "#cdd6f4" } # Surface0 / Text
 
 # Unset mode
@@ -67,16 +67,16 @@ unset_alt  = { bg = "#313244", fg = "#cdd6f4" } # Surface0 / Text
 sep_left  = { open = "🭁", close = "🭠" }
 sep_right = { open = "🭁", close = "🭠" }
 
-# Permissions (使用更柔和的 Mocha 色彩)
+# Permissions
 perm_type  = { fg = "#cba6f7" } # Mauve
-perm_write = { fg = "#fab387" } # Peach
+perm_write = { fg = "#f5c2e7" } # Pink
 perm_read  = { fg = "#f9e2af" } # Yellow
 perm_exec  = { fg = "#a6e3a1" } # Green
 perm_sep   = { fg = "#6c7086" } # Overlay0
 
 # Progress
 progress_label  = { bold = true }
-progress_normal = { fg = "#b4befe", bg = "#313244" } # Lavender / Surface0
+progress_normal = { fg = "#cba6f7", bg = "#313244" } # Mauve / Surface0：进度条主色
 progress_error  = { fg = "#f38ba8", bg = "#313244" } # Red / Surface0
 
 # : ]]]
@@ -87,7 +87,7 @@ progress_error  = { fg = "#f38ba8", bg = "#313244" } # Red / Surface0
 [which]
 cols = 3
 mask = { bg = "#313244" } # Surface0
-cand = { fg = "#b4befe" } # Lavender
+cand = { fg = "#cba6f7" } # Mauve：候选键
 rest = { fg = "#9399b2" } # Overlay2
 desc = { fg = "#cdd6f4" } # Text
 separator = " ▶ "
@@ -99,7 +99,7 @@ separator_style = { fg = "#6c7086" } # Overlay0
 # : Notify [[[
 
 [notify]
-title_info  = { fg = "#89b4fa" } # Blue
+title_info  = { fg = "#b4befe" } # Lavender
 title_warn  = { fg = "#f9e2af" } # Yellow
 title_error = { fg = "#f38ba8" } # Red
 
@@ -109,7 +109,7 @@ title_error = { fg = "#f38ba8" } # Red
 # : Picker [[[
 
 [pick]
-border = { fg = "#b4befe" } # Lavender
+border = { fg = "#cba6f7" } # Mauve
 active = { fg = "#cba6f7", bold = true } # Mauve
 inactive = {}
 
@@ -119,7 +119,7 @@ inactive = {}
 # : Input [[[
 
 [input]
-border = { fg = "#b4befe" } # Lavender
+border = { fg = "#cba6f7" } # Mauve
 value  = { fg = "#cdd6f4" } # Text
 
 # : ]]]
@@ -128,7 +128,7 @@ value  = { fg = "#cdd6f4" } # Text
 # : Completion [[[
 
 [cmp]
-border = { fg = "#b4befe", bg = "#181825" } # Lavender / Mantle
+border = { fg = "#cba6f7", bg = "#181825" } # Mauve / Mantle
 
 # : ]]]
 
@@ -136,7 +136,7 @@ border = { fg = "#b4befe", bg = "#181825" } # Lavender / Mantle
 # : Tasks [[[
 
 [tasks]
-border  = { fg = "#b4befe" } # Lavender
+border  = { fg = "#cba6f7" } # Mauve
 title   = {}
 hovered = { fg = "#cba6f7", underline = true } # Mauve
 
@@ -148,7 +148,7 @@ hovered = { fg = "#cba6f7", underline = true } # Mauve
 [help]
 on     = { fg = "#cdd6f4" } # Text
 run    = { fg = "#a6e3a1" } # Green
-footer = { fg = "#1e1e2e", bg = "#b4befe" } # Base / Lavender
+footer = { fg = "#1e1e2e", bg = "#cba6f7" } # Base / Mauve
 
 # : ]]]
 
@@ -172,11 +172,11 @@ rules = [
 
     # Special files
     { url = "*", is = "orphan", bg = "#f38ba8", fg = "#1e1e2e" }, # Red / Base
-    { url = "*", is = "exec", fg = "#a6e3a1" }, # Green (让可执行文件醒目一点)
+    { url = "*", is = "exec", fg = "#a6e3a1" }, # Green
 
     # Fallback
     { url = "*", fg = "#cdd6f4" }, # Text
-    { url = "*/", fg = "#b4befe" }, # Lavender (文件夹统一色)
+    { url = "*/", fg = "#cba6f7" }, # Mauve：文件夹统一使用主紫
 ]
 
 
@@ -194,12 +194,12 @@ prepend_conds = [
     { if = "dir & hidden", text = "", fg = "#6c7086" }, # Overlay0
     
     # 普通文件夹
-    { if = "dir", text = "", fg = "#b4befe" }, # Lavender
+    { if = "dir", text = "", fg = "#cba6f7" }, # Mauve
     
     # 损坏的符号链接 (孤儿) - 使用 Error 色
     { if = "orphan", text = "󰌌", fg = "#f38ba8" }, # Red
     # 正常的符号链接
-    { if = "link", text = "󰌷", fg = "#89b4fa" }, # Blue
+    { if = "link", text = "󰌷", fg = "#b4befe" }, # Lavender
     
     # 可执行文件 (排除文件夹)
     { if = "exec & !dir", text = "󰆧", fg = "#a6e3a1" }, # Green
@@ -212,7 +212,7 @@ prepend_conds = [
 # 2. 预设目录
 # ==========================================
 prepend_dirs = [
-    # 常用主目录使用 Lavender
+    # 常用主目录统一使用淡紫色 (Lavender)
     { name = "Desktop", text = "", fg = "#b4befe" },
     { name = "Documents", text = "󰈙", fg = "#b4befe" },
     { name = "Downloads", text = "󰇚", fg = "#b4befe" },
@@ -221,11 +221,11 @@ prepend_dirs = [
     { name = "Videos", text = "󰕧", fg = "#b4befe" },
     { name = "Public", text = "", fg = "#b4befe" },
 
-    # 开发/配置目录使用 Sapphire / Sky 柔化
-    { name = ".config", text = "", fg = "#74c7ec" }, # Sapphire
-    { name = ".git", text = "󰊢", fg = "#fab387" }, # Peach (Git标志色)
-    { name = "Github", text = "󰊢", fg = "#fab387" },
-    { name = "src", text = "", fg = "#89b4fa" }, # Blue
+    # 开发/配置目录
+    { name = ".config", text = "", fg = "#b4befe" }, # Lavender
+    { name = ".git", text = "󰊢", fg = "#f5c2e7" }, # Pink
+    { name = "Github", text = "󰊢", fg = "#f5c2e7" }, # Pink
+    { name = "src", text = "", fg = "#cba6f7" }, # Mauve
 ]
 
 # ==========================================
@@ -250,31 +250,31 @@ prepend_exts = [
     { name = "rar", text = "󰛫", fg = "#f5c2e7" },
     { name = "7z", text = "󰛫", fg = "#f5c2e7" },
 
-    # 常用代码/配置文件 - Mauve / Sapphire
-    { name = "conf", text = "", fg = "#74c7ec" },
-    { name = "toml", text = "", fg = "#74c7ec" },
-    { name = "yaml", text = "", fg = "#74c7ec" },
-    { name = "yml", text = "", fg = "#74c7ec" },
-    { name = "json", text = "", fg = "#f9e2af" },
-    { name = "sh", text = "", fg = "#a6e3a1" },
+    # 常用代码/配置文件 - Mauve / Lavender
+    { name = "conf", text = "", fg = "#b4befe" }, # Lavender
+    { name = "toml", text = "", fg = "#b4befe" },
+    { name = "yaml", text = "", fg = "#b4befe" },
+    { name = "yml", text = "", fg = "#b4befe" },
+    { name = "json", text = "", fg = "#f9e2af" }, # Yellow (保留高辨识度)
+    { name = "sh", text = "", fg = "#a6e3a1" }, # Green
     { name = "bash", text = "", fg = "#a6e3a1" },
-    { name = "py", text = "", fg = "#89b4fa" },
-    { name = "rs", text = "", fg = "#fab387" },
-    { name = "c", text = "", fg = "#89b4fa" },
-    { name = "cpp", text = "", fg = "#89b4fa" },
-    { name = "md", text = "", fg = "#cdd6f4" },
-    { name = "txt", text = "󰈙", fg = "#bac2de" },
+    { name = "py", text = "", fg = "#b4befe" }, # Lavender
+    { name = "rs", text = "", fg = "#cba6f7" }, # Mauve
+    { name = "c", text = "", fg = "#b4befe" },
+    { name = "cpp", text = "", fg = "#b4befe" },
+    { name = "md", text = "", fg = "#cdd6f4" }, # Text
+    { name = "txt", text = "󰈙", fg = "#bac2de" }, # Subtext1
 ]
 
 # ==========================================
 # 4. 预设特定文件名
 # ==========================================
 prepend_files = [
-    { name = "PKGBUILD", text = "", fg = "#89b4fa" },
-    { name = "README.md", text = "󰂺", fg = "#cdd6f4" },
-    { name = "Makefile", text = "", fg = "#a6e3a1" },
-    { name = ".bashrc", text = "", fg = "#74c7ec" },
-    { name = ".zshrc", text = "", fg = "#74c7ec" },
+    { name = "PKGBUILD", text = "", fg = "#cba6f7" }, # Mauve
+    { name = "README.md", text = "󰂺", fg = "#cdd6f4" }, # Text
+    { name = "Makefile", text = "", fg = "#a6e3a1" }, # Green
+    { name = ".bashrc", text = "", fg = "#b4befe" }, # Lavender
+    { name = ".zshrc", text = "", fg = "#b4befe" }, # Lavender
 ]
 
 # : ]]]
