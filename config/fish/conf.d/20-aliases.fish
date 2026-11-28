@@ -10,18 +10,6 @@
 function th --wraps=cd --description 回到主目录
     builtin cd ~ $argv
 end
-function .. --wraps=cd --description 上级目录
-    builtin cd .. $argv
-end
-function ... --wraps=cd
-    builtin cd ../.. $argv
-end
-function .... --wraps=cd
-    builtin cd ../../.. $argv
-end
-function ..... --wraps=cd
-    builtin cd ../../../.. $argv
-end
 
 # ---- 文件列表 (现代化 eza 增强) ----
 function ls --wraps=eza --description 'eza 彩色列表'
